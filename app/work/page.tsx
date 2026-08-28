@@ -5,6 +5,13 @@ const work = [
   { number: "04", title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium-facade.jpg", tags: "Architecture / Material / Ecology", question: "Growth → maturity → decay", motion: "mycelium" },
 ] as const;
 
+const additionalWork = [
+  { number: "05", title: "Conflict in Light and Dark", slug: "conflict-light-dark", image: "/portfolio/conflict-light-dark.jpg", tags: "Architecture / Material", question: "Light → contrast → cultural expression", year: "2023" },
+  { number: "06", title: "Lens on the Move", slug: "lens-on-the-move", image: "/portfolio/lens-on-the-move.jpg", tags: "Architecture / Material", question: "Mobility → adaptation → dwelling", year: "2024" },
+  { number: "07", title: "Intertwined Energy and Human Activities", slug: "future-truck-stop", image: "/portfolio/future-truck-stop.jpg", tags: "Architecture / Ecology", question: "Energy → infrastructure → human activity", year: "2023" },
+  { number: "08", title: "Hope in Gap", slug: "hope-in-gap", image: "/portfolio/hope-in-gap.jpg", tags: "Architecture", question: "Urban gaps → modular housing → community", year: "2020" },
+] as const;
+
 function MotionPreview({ type }: { type: (typeof work)[number]["motion"] }) {
   if (type === "biochar") return <div className="motion biochar-motion" aria-hidden="true"><span className="biochar-cycle" /><i className="biochar-trunk" /><i className="biochar-branch branch-one" /><i className="biochar-branch branch-two" /><i className="biochar-branch branch-three" /><i className="biochar-branch branch-four" /></div>;
   if (type === "proxy") return <div className="motion proxy-motion" aria-hidden="true">{Array.from({ length: 9 }, (_, i) => <i key={i} style={{ "--n": i } as React.CSSProperties} />)}</div>;
@@ -41,6 +48,29 @@ export default function WorkIndex() {
           <small>View project ↗</small>
         </div>
       </a>)}
+    </section>
+
+    <section className="additional-work" aria-labelledby="additional-work-title">
+      <header className="additional-work-head">
+        <span>02 / ADDITIONAL + ONGOING</span>
+        <div><h2 id="additional-work-title">Further studies.</h2><p>A quieter index of spatial studies, adaptable systems, and work in development.</p></div>
+      </header>
+      <div className="additional-work-grid">
+        {additionalWork.map(project => <a href={`/work/${project.slug}`} className="additional-project" key={project.slug}>
+          <figure><img src={project.image} alt={`${project.title} portfolio spread`} /><figcaption>{project.year} / PORTFOLIO STUDY</figcaption></figure>
+          <div className="additional-project-copy">
+            <span>{project.number}</span><p>{project.tags}</p>
+            <h2>{project.title}</h2><h3>{project.question}</h3><small>View project ↗</small>
+          </div>
+        </a>)}
+        <article className="additional-project ongoing-project" aria-label="Data Product, ongoing research">
+          <figure className="data-placeholder" aria-hidden="true"><div className="data-axis" /><i /><i /><i /><i /><i /><span>ONGOING / 2026</span></figure>
+          <div className="additional-project-copy">
+            <span>09</span><p>Computation</p>
+            <h2>Data Product</h2><h3>Data → interface → decision</h3><small>In development</small>
+          </div>
+        </article>
+      </div>
     </section>
 
     <footer><span>LINDA DENG</span><span>DESIGN / RESEARCH / TECHNOLOGY</span><span>NEW YORK · 2026</span></footer>

@@ -25,7 +25,7 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.doesNotMatch(html, /id="work"/);
 });
 
-test("serves the work index, about page, and all four project routes", async () => {
+test("serves the work index, about page, and all eight project routes", async () => {
   const routes = [
     ["/work", /Selected[\s\S]*research systems/],
     ["/about", /Designing relationships/],
@@ -33,6 +33,10 @@ test("serves the work index, about page, and all four project routes", async () 
     ["/work/proxy-landscape", /The Proxy Landscape/],
     ["/work/museum-reorganization", /Museum Reorganization/],
     ["/work/mycelium-living-facade", /Mycelium Living Facade/],
+    ["/work/conflict-light-dark", /Conflict in Light and Dark/],
+    ["/work/lens-on-the-move", /Lens on the Move/],
+    ["/work/future-truck-stop", /Intertwined Energy and Human Activities/],
+    ["/work/hope-in-gap", /Hope in Gap/],
   ];
   for (const [path, expected] of routes) {
     const response = await render(path);

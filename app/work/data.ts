@@ -8,7 +8,7 @@ export const projects = {
     finding:"The branching trash-chute system is both infrastructure and symbol: like a plant’s vascular system, it feeds the building from within. At the urban scale it grows into a network of collection routes and sky gardens, shifting renovation from a one-time intervention toward an ongoing metabolism."
   },
   "proxy-landscape": {
-    number:"02", title:"The Proxy Landscape", year:"2022", tags:"Architecture / Computation / Ecology", image:"/portfolio/proxy/hero-map-overview-clear.webp", secondImage:"/portfolio/proxy/map-site-clear.webp",
+    number:"02", title:"The Proxy Landscape", year:"2022", tags:"Architecture / Computation / Ecology", image:"/portfolio/proxy/hero-map-spontaneous-clear.webp", secondImage:"/portfolio/proxy/map-site-clear.webp",
     lead:"A study of water as a proxy for urban conditions, leading to six low-tech machines that interact with the changing salt-marsh landscape of Jamaica Bay.",
     question:"Can water reveal—and help repair—the hybrid urban landscape?",
     overview:"Water is separated into two systems according to the forces that move it: spontaneous flows driven by gravity and wind, and unspontaneous flows captured, pumped, blocked, and discharged by urban infrastructure. Mapping their intersections reveals where pollution, erosion, and sea-level rise accelerate salt-marsh degradation.",

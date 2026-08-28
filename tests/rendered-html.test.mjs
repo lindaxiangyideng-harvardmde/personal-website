@@ -70,5 +70,9 @@ test("renders Proxy Landscape as a complete watershed research narrative", async
   assert.match(html, /Hybrid watershed machines/i);
   assert.match(html, /Connected restorative landscape/i);
   assert.match(html, /\/portfolio\/proxy\/machine-purifier\.jpg/);
-  assert.match(html, /\/portfolio\/proxy\/outcome-west-pond\.jpg/);
+  assert.match(html, /\/portfolio\/proxy\/hero-map-spontaneous-clear\.webp/);
+  assert.match(html, /\/portfolio\/proxy\/hero-map-unspontaneous-clear\.webp/);
+  assert.match(html, /\/portfolio\/proxy\/watershed-spontaneous-sinks-clear\.webp/);
+  assert.match(html, /\/portfolio\/proxy\/outcome-west-pond-clear\.webp/);
+  assert.match(html, /\/portfolio\/proxy\/closing-attenuator\.webp/);
 });

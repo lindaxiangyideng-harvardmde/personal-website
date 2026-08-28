@@ -79,7 +79,7 @@ export default function Home() {
           </a>
         </article>)}
 
-        <div className="scene-status" aria-live="polite"><span>{String(scene + 1).padStart(2, "0")} / 05</span><p>{scene === 0 ? "Systems Map" : currentProject?.title}</p><small>{scene === 0 ? "Interactive research field" : currentProject?.fields}</small></div>
+        {scene > 0 && currentProject ? <div className="scene-status" aria-live="polite"><span>{String(scene + 1).padStart(2, "0")} / 05</span><p>{currentProject.title}</p><small>{currentProject.fields}</small></div> : null}
         <a className="enter-work" href="/work">Selected Work <span>↓</span></a>
       </section>
 

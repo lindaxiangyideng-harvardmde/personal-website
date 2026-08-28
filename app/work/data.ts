@@ -22,6 +22,14 @@ export const projects = {
     overview:"The Kanazawa Art Museum has a fixed circular boundary and an open plan, yet irregular galleries can make navigation difficult. The research treats layout, route, and view as related problems. A genetic algorithm generates room configurations with comparable areas, then route-finding and isovist analysis test their accessibility and spatial character.",
     stages:[["01","Constrain","Define boundary, room areas, courtyards and a first division."],["02","Generate","Subdivide nineteen blocks and optimize area tolerance to 2%."],["03","Connect","Generate door locations and all possible gallery paths."],["04","Navigate","Find four efficient routes without prescribing a single journey."],["05","Evaluate","Quantify visual openness and complexity through isovists."]],
     finding:"The result is not one optimum plan. It is a readable family of alternatives for curators and museum owners: layouts can be periodically reorganized while visitors retain multiple choices of movement, view and discovery."
+  },
+  "mycelium-living-facade": {
+    number:"04", title:"Mycelium Living Facade", year:"2025", tags:"Architecture / Material / Ecology", image:"/portfolio/mycelium-facade.jpg", secondImage:"/portfolio/mycelium-research.jpg",
+    lead:"A living facade that uses mycelium’s growth, maturity, and decay as an architectural clock—linking seasonal change, agricultural waste, and public life.",
+    question:"Can a facade be designed as a living material cycle rather than a permanent surface?",
+    overview:"The proposal begins with mycelium as both material and process. Agricultural by-products provide a substrate; branching fungal networks bind that matter into lightweight components; seasonal growth and decomposition then change the facade’s appearance and performance over time.",
+    stages:[["01","Feed","Local agricultural waste becomes a nutrient-rich substrate."],["02","Grow","Mycelial networks bind loose matter into formed components."],["03","Mature","The facade reaches its densest spatial and environmental state."],["04","Weather","Use, climate, and seasonal cycles alter the living surface."],["05","Return","Spent material decomposes and re-enters a local nutrient cycle."]],
+    finding:"Instead of hiding material change, the facade makes duration visible. Its value lies in an architecture that can grow, perform, weather, and return—allowing maintenance and decay to become part of the public narrative of the building."
   }
 } as const;
 

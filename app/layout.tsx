@@ -20,10 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol = h.get("x-forwarded-proto") ?? "https";
   const image = `${protocol}://${host}/og.png`;
   return {
-    title: "Linda Deng — Systems Atlas",
+    title: "Linda Deng — Design / Research / Technology",
     description: "Design research across material, computation, architecture, and ecology.",
-    openGraph: { title: "Linda Deng — Systems Atlas", description: "Design research across material, computation, architecture, and ecology.", images: [image] },
-    twitter: { card: "summary_large_image", title: "Linda Deng — Systems Atlas", description: "Design research across material, computation, architecture, and ecology.", images: [image] },
+    openGraph: { title: "Linda Deng — Design / Research / Technology", description: "Design research across material, computation, architecture, and ecology.", images: [image] },
+    twitter: { card: "summary_large_image", title: "Linda Deng — Design / Research / Technology", description: "Design research across material, computation, architecture, and ecology.", images: [image] },
     icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
   };
 }

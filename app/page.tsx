@@ -1,59 +1,75 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties, type PointerEvent } from "react";
+import Link from "next/link";
 
-const systems = [
-  { id:"01", name:"Biochar Metabolism", field:"Material metabolism", color:"#315f57", stages:[
-    ["Municipal waste","An urban output becomes a local material input."],
-    ["Pyrolysis","Heat transforms biomass into energy and stable carbon."],
-    ["Biochar","Carbon is stored in a porous, adaptable material."],
-    ["Building products","Biochar enters plaster, concrete, insulation and panels."],
-    ["Repair + reuse","A building metabolizes its own operational waste."],
-    ["Closed carbon loop","Architecture becomes part of an urban carbon cycle."] ] },
-  { id:"02", name:"Proxy Landscape", field:"Hybrid watershed", color:"#3c6688", stages:[
-    ["Urban + tidal water","Spontaneous and controlled flows meet at Jamaica Bay."],
-    ["GIS mapping","Flow, pollution, erosion and marsh loss become legible."],
-    ["Intersection sites","Machines locate where the two watersheds collide."],
-    ["Low-tech machines","Human and water power filter, move and accumulate."],
-    ["Marsh repair","A chain of interventions modifies the coastal edge."],
-    ["Shared awareness","Landscape labor becomes visible and participatory."] ] },
-  { id:"03", name:"Museum Reorganization", field:"Computational spatial logic", color:"#8a553c", stages:[
-    ["Boundary + areas","A fixed museum envelope receives variable room inputs."],
-    ["Genetic division","Layouts evolve while holding area tolerance within 2%."],
-    ["Door network","Possible connections are generated and sorted."],
-    ["Route finding","Four efficient paths preserve freedom to explore."],
-    ["Isovist analysis","Openness and visual complexity are quantified."],
-    ["Curatorial choice","Readable outputs support periodic reorganization."] ] },
-];
+const fields = [
+  { name: "Architecture", note: "spatial effect" },
+  { name: "Material", note: "physical transformation" },
+  { name: "Computation", note: "organizational logic" },
+  { name: "Ecology", note: "living relation" },
+] as const;
 
-const projects=[
-  {id:"01",title:"Biochar Metabolism",slug:"biochar-metabolism",image:"/portfolio/biochar-system.jpg",tags:"Architecture · Material · Ecology",question:"Can urban waste become the material of architectural repair?"},
-  {id:"02",title:"The Proxy Landscape",slug:"proxy-landscape",image:"/portfolio/proxy-fields.jpg",tags:"Architecture · Computation · Ecology",question:"Can water reveal—and help repair—the hybrid urban landscape?"},
-  {id:"03",title:"Museum Reorganization",slug:"museum-reorganization",image:"/portfolio/museum-process.jpg",tags:"Architecture · Computation",question:"Can optimization preserve, rather than reduce, spatial freedom?"},
-];
+export default function Home() {
+  const [active, setActive] = useState(0);
+  const [pointer, setPointer] = useState({ x: 50, y: 50 });
 
-export default function Home(){
-  const [systemIndex,setSystemIndex]=useState(0); const [stageIndex,setStageIndex]=useState(0); const system=systems[systemIndex];
-  return <main style={{"--system-color":system.color} as React.CSSProperties}>
-    <header><a className="mark" href="#top">LINDA DENG</a><nav><a href="#work">Index</a><a href="#about">About</a></nav></header>
-    <section className="atlas" id="top">
-      <div className="atlas-intro"><span>DESIGN RESEARCH / SYSTEMS ATLAS</span><h1>Conditions become<br/><i>spatial systems.</i></h1><p>Architecture, material, computation and ecology—read through the transformations that connect them.</p></div>
-      <div className="system-meta"><span>SYSTEM {system.id} / 03</span><h2>{system.name}</h2><p>{system.field}</p></div>
-      <div className="system-chain" aria-label={`${system.name} causal system`}>
-        <div className="causal-line"/><div className="flow-pulse" style={{left:`calc(${stageIndex * 18}% + 2%)`}}/>
-        {system.stages.map((stage,index)=><button key={stage[0]} onPointerEnter={()=>setStageIndex(index)} onFocus={()=>setStageIndex(index)} onClick={()=>setStageIndex(index)} className={index<=stageIndex?"reached":""}><span>{String(index+1).padStart(2,"0")}</span><i/><b>{stage[0]}</b></button>)}
-      </div>
-      <div className="stage-reading"><span>{String(stageIndex+1).padStart(2,"0")} / 06</span><p>{system.stages[stageIndex][1]}</p><small>{stageIndex===0?"INPUT":stageIndex===5?"EFFECT":"TRANSFORMATION"}</small></div>
-      <div className="system-tabs">{systems.map((item,index)=><button key={item.id} className={index===systemIndex?"selected":""} onClick={()=>{setSystemIndex(index);setStageIndex(0)}}><span>{item.id}</span>{item.name}</button>)}</div>
-      <a className="continue" href="#work">Explore selected work ↓</a>
-    </section>
-    <section id="work" className="work-section"><div className="section-head"><span>01 / SELECTED WORK</span><p>Research moves from evidence to system, and from system to a spatial proposition.</p></div>
-      <div className="work-list">{projects.map(project=><a className="work-card" href={`/work/${project.slug}`} key={project.slug}>
-        <div className="work-image"><img src={project.image} alt={`${project.title} portfolio spread`}/><div className="scan-line"/></div>
-        <div className="work-copy"><span>{project.id}</span><p>{project.tags}</p><h2>{project.title}</h2><h3>{project.question}</h3><i>View research ↗</i></div>
-      </a>)}</div>
-    </section>
-    <section id="about" className="about-section"><span>02 / POSITION</span><div><h2>Designing relationships,<br/><i>not isolated objects.</i></h2><p>Linda Deng is an architectural designer and researcher working across material systems, computation, and ecological processes. Her work uses mapping, modeling, and prototyping to translate complex conditions into spatial propositions.</p><a href="mailto:hello@lindadeng.design">Contact ↗</a></div></section>
-    <footer><span>LINDA DENG</span><span>DESIGN / RESEARCH / TECHNOLOGY</span><span>NEW YORK · 2026</span></footer>
-  </main>
+  function traceSystem(event: PointerEvent<HTMLElement>) {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+    setPointer({ x, y });
+    setActive(x < 50 ? (y < 50 ? 0 : 3) : y < 50 ? 1 : 2);
+  }
+
+  return (
+    <main
+      className="home-shell"
+      onPointerMove={traceSystem}
+      style={{ "--mx": `${pointer.x}%`, "--my": `${pointer.y}%` } as CSSProperties}
+    >
+      <header className="home-header">
+        <Link className="home-mark" href="/" aria-label="Linda Deng home">LINDA DENG</Link>
+        <p>Design / Research / Technology</p>
+        <nav aria-label="Primary navigation">
+          <Link href="/work">Selected Work</Link>
+          <Link href="/about">About</Link>
+        </nav>
+      </header>
+
+      <section className="home-stage" aria-label="An interactive map connecting conditions to four fields of practice">
+        <div className="field-orbit">
+          <div className="field-haze" />
+          <div className="field-disc field-disc-one" />
+          <div className="field-disc field-disc-two" />
+          <div className="field-core"><span>CONDITION</span><i /></div>
+          {fields.map((field, index) => (
+            <div className={`field-path path-${index} ${active === index ? "is-active" : ""}`} key={field.name}>
+              <i className="path-line" />
+              <i className="path-pulse" />
+              <button type="button" onPointerEnter={() => setActive(index)} onFocus={() => setActive(index)} aria-label={`Trace the system toward ${field.name}`}>
+                <span>0{index + 1}</span>
+                <b>{field.name}</b>
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <div className="home-title">
+          <span>RESEARCH LANDSCAPE / 2026</span>
+          <h1>Systems become<br /><i>spatial propositions.</i></h1>
+        </div>
+
+        <div className="system-reading" aria-live="polite">
+          <span>INPUT → TRANSFORMATION → EFFECT</span>
+          <p>{fields[active].name}</p>
+          <small>{fields[active].note}</small>
+        </div>
+
+        <Link className="enter-work" href="/work">Selected Work <span>↓</span></Link>
+      </section>
+
+      <div className="home-coordinate"><span>{pointer.x.toFixed(0)}</span> / <span>{pointer.y.toFixed(0)}</span></div>
+    </main>
+  );
 }

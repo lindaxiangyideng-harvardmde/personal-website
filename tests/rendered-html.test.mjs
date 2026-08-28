@@ -60,3 +60,15 @@ test("renders Biochar as a complete research narrative", async () => {
   assert.match(html, /\/portfolio\/biochar\/plan-basement\.jpg/);
   assert.doesNotMatch(html, /Prototype wall/i);
 });
+
+test("renders Proxy Landscape as a complete watershed research narrative", async () => {
+  const response = await render("/work/proxy-landscape");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="proxy-page"/);
+  assert.match(html, /Two watersheds/i);
+  assert.match(html, /Hybrid watershed machines/i);
+  assert.match(html, /Connected restorative landscape/i);
+  assert.match(html, /\/portfolio\/proxy\/machine-purifier\.jpg/);
+  assert.match(html, /\/portfolio\/proxy\/outcome-west-pond\.jpg/);
+});

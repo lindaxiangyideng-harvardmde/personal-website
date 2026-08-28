@@ -25,15 +25,13 @@ function HeroMotion({ type }: { type: (typeof projectScenes)[number]["motion"] }
 
 export default function Home() {
   const [scene, setScene] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [active, setActive] = useState(0);
   const [pointer, setPointer] = useState({ x: 50, y: 50 });
 
   useEffect(() => {
-    if (paused) return;
-    const timer = window.setInterval(() => setScene(current => (current + 1) % 5), 8000);
+    const timer = window.setInterval(() => setScene(current => (current + 1) % 5), 7500);
     return () => window.clearInterval(timer);
-  }, [paused]);
+  }, []);
 
   function traceSystem(event: PointerEvent<HTMLElement>) {
     if (scene !== 0) return;
@@ -73,7 +71,7 @@ export default function Home() {
         </div>
 
         {projectScenes.map((project, index) => <article className={`home-project-scene ${scene === index + 1 ? "is-current" : ""}`} aria-hidden={scene !== index + 1} key={project.slug}>
-          <a className="home-project-link" href={`/work/${project.slug}`} tabIndex={scene === index + 1 ? 0 : -1} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
+          <a className="home-project-link" href={`/work/${project.slug}`} tabIndex={scene === index + 1 ? 0 : -1}>
             <figure className="home-project-media"><img src={project.image} alt={`${project.title} portfolio placeholder`} /><HeroMotion type={project.motion} /></figure>
             <div className="home-project-title"><span>0{index + 1} / SELECTED WORK</span><h2>{project.title}</h2><p>{project.caption}</p></div>
           </a>

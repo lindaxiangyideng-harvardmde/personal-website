@@ -6,7 +6,7 @@ const work = [
 ] as const;
 
 function MotionPreview({ type }: { type: (typeof work)[number]["motion"] }) {
-  if (type === "biochar") return <div className="motion biochar-motion" aria-hidden="true"><i /><i /><i /><i /><i /></div>;
+  if (type === "biochar") return <div className="motion biochar-motion" aria-hidden="true"><span className="biochar-cycle" /><i className="biochar-trunk" /><i className="biochar-branch branch-one" /><i className="biochar-branch branch-two" /><i className="biochar-branch branch-three" /><i className="biochar-branch branch-four" /></div>;
   if (type === "proxy") return <div className="motion proxy-motion" aria-hidden="true">{Array.from({ length: 9 }, (_, i) => <i key={i} style={{ "--n": i } as React.CSSProperties} />)}</div>;
   if (type === "museum") return <div className="motion museum-motion" aria-hidden="true"><i /><i /><i /><i /><b>01</b><b>02</b><b>03</b><b>04</b></div>;
   return <div className="motion mycelium-motion" aria-hidden="true"><i /><i /><i /><span>GROWTH</span><span>MATURE</span><span>DECAY</span></div>;

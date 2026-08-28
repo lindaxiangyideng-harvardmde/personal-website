@@ -44,3 +44,15 @@ test("serves the work index, about page, and all eight project routes", async ()
     assert.match(await response.text(), expected);
   }
 });
+
+test("renders Biochar as a complete research narrative", async () => {
+  const response = await render("/work/biochar-metabolism");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="biochar-page"/);
+  assert.match(html, /From waste to biochar/i);
+  assert.match(html, /Building metabolism/i);
+  assert.match(html, /From building to community/i);
+  assert.match(html, /\/portfolio\/biochar\/renovation\.gif/);
+  assert.match(html, /\/portfolio\/biochar\/community-system\.jpg/);
+});

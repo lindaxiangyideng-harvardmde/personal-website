@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type CSSProperties, type PointerEvent } from "react";
-import Link from "next/link";
 
 const fields = [
   { name: "Architecture", note: "spatial effect" },
@@ -29,11 +28,11 @@ export default function Home() {
       style={{ "--mx": `${pointer.x}%`, "--my": `${pointer.y}%` } as CSSProperties}
     >
       <header className="home-header">
-        <Link className="home-mark" href="/" aria-label="Linda Deng home">LINDA DENG</Link>
+        <a className="home-mark" href="/" aria-label="Linda Deng home">LINDA DENG</a>
         <p>Design / Research / Technology</p>
         <nav aria-label="Primary navigation">
-          <Link href="/work">Selected Work</Link>
-          <Link href="/about">About</Link>
+          <a href="/work">Selected Work</a>
+          <a href="/about">About</a>
         </nav>
       </header>
 
@@ -66,7 +65,7 @@ export default function Home() {
           <small>{fields[active].note}</small>
         </div>
 
-        <Link className="enter-work" href="/work">Selected Work <span>↓</span></Link>
+        <a className="enter-work" href="/work">Selected Work <span>↓</span></a>
       </section>
 
       <div className="home-coordinate"><span>{pointer.x.toFixed(0)}</span> / <span>{pointer.y.toFixed(0)}</span></div>

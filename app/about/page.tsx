@@ -1,11 +1,9 @@
-import Link from "next/link";
-
 export default function AboutPage() {
   return <main className="about-page">
     <header className="index-header">
-      <Link className="home-mark" href="/">LINDA DENG</Link>
+      <a className="home-mark" href="/">LINDA DENG</a>
       <p>Design / Research / Technology</p>
-      <nav><Link href="/work">Selected Work</Link><Link href="/">Home</Link></nav>
+      <nav><a href="/work">Selected Work</a><a href="/">Home</a></nav>
     </header>
     <section className="about-hero">
       <span>02 / POSITION</span>

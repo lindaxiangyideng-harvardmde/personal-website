@@ -20,7 +20,7 @@ export default function BiocharProject() {
       <dl className="biochar-facts"><div><dt>Type</dt><dd>Collaborative studio project</dd></div><div><dt>Institution</dt><dd>Columbia GSAPP</dd></div><div><dt>Focus</dt><dd>Adaptive reuse · material cycles · urban infrastructure</dd></div></dl>
     </section>
 
-    <Figure src={asset("hero.jpg")} alt="Biochar Metabolism architectural proposal" caption="01 — The renovated building as a productive node within a larger urban material cycle." className="biochar-hero" />
+    <Figure src={asset("community-system.jpg")} alt="Community-scale biochar collection and production network" caption="01 — A distributed metabolism connects buildings, collection routes, production, and shared landscapes." className="biochar-hero" />
 
     <section className="biochar-intro biochar-rule">
       <span>RESEARCH QUESTION</span>
@@ -28,9 +28,18 @@ export default function BiocharProject() {
       <p>Modern cities separate two related problems. Organic material leaves the city as waste, while construction continually demands new products and produces new emissions. Biochar Metabolism brings these conditions into one architectural system. Biomass is collected locally, transformed through pyrolysis, and returned as a carbon-storing additive for plaster, concrete, insulation, and printed components. Rather than proposing demolition and replacement, the project asks how an existing building could collect, process, distribute, and reuse material over time.</p>
     </section>
 
+    <section className="biochar-context biochar-rule">
+      <div className="biochar-section-head"><span>CONTEXT / WASTE FLOWS</span><h2>The material problem begins beyond the building.</h2><p>The project’s research maps municipal waste as a spatial and logistical system: what enters the waste stream, where it is processed, and how far material travels after leaving New York City. These graphics preserve the data used during the studio investigation; they establish the project’s original research context rather than representing live statistics.</p></div>
+      <Figure src={asset("world-waste-map.jpg")} alt="Global map of municipal solid waste and transportation emissions" caption="Global waste context — comparative municipal solid-waste generation and the transportation distance embedded in disposal." className="biochar-context-wide" />
+      <div className="biochar-context-grid">
+        <Figure src={asset("waste-statistics.jpg")} alt="Charts showing the composition and destination of municipal solid waste" caption="Waste profile — material categories and treatment destinations used in the project research." />
+        <Figure src={asset("nyc-waste-map.jpg")} alt="Map of New York City waste transportation routes" caption="New York waste geography — exported material, transfer infrastructure, and long-distance routes." />
+      </div>
+    </section>
+
     <section className="biochar-chapter biochar-rule">
       <div className="biochar-chapter-copy"><span>01 / THE CARBON LOOP</span><h2>Waste is not an endpoint.</h2><p>In a conventional cycle, plants absorb carbon and release it again through decomposition or combustion. Pyrolysis interrupts that return. By heating biomass with limited oxygen, the process produces energy carriers alongside a stable, carbon-rich solid: biochar. The project translates this temporal carbon loop into a spatial proposition, connecting municipal waste streams to building maintenance.</p></div>
-      <Figure src={asset("carbon-cycle.jpg")} alt="Comparison of conventional biomass and biochar carbon cycles" caption="Conventional biomass cycle compared with a biochar cycle that retains carbon in material form." />
+      <Figure src={asset("carbon-cycle.jpg")} alt="Life-cycle comparison of the existing building and proposed biochar system" caption="Project life-cycle framework — municipal waste, localized pyrolysis, operational carbon, and biochar products are read as one architectural system." />
     </section>
 
     <section className="biochar-full biochar-rule">
@@ -42,9 +51,8 @@ export default function BiocharProject() {
       <div className="biochar-section-head"><span>03 / MATERIAL EVIDENCE</span><h2>One feedstock, multiple architectural roles.</h2><p>Biochar is tested not as a singular finish but as an additive across different assemblies. Its porosity and carbon content allow it to enter plaster, concrete, insulation, and composite products. Early samples and prototypes compare texture, density, fabrication, and possible placement within a wall. The research moves deliberately from loose matter to components, then from components to a repeatable construction system.</p></div>
       <div className="biochar-material-grid">
         <Figure src={asset("material-samples.jpg")} alt="Biochar material samples" caption="Material samples — variations in grain, binder, density, and finish." />
-        <Figure src={asset("product-system.jpg")} alt="Biochar product applications" caption="Product family — biochar translated into several building applications." />
+        <Figure src={asset("product-system.jpg")} alt="Mapping of waste inputs, biochar qualities, and building applications" caption="Material allocation — waste inputs are translated into commercial, residential, and communal building products." />
       </div>
-      <Figure src={asset("wall-system.jpg")} alt="Prototype biochar wall assembly" caption="Prototype wall — interlocking units and layered products form a repairable assembly." className="biochar-wide" />
     </section>
 
     <section className="biochar-full biochar-rule">
@@ -60,14 +68,25 @@ export default function BiocharProject() {
       <div className="biochar-section-head"><span>05 / INHABITING THE SYSTEM</span><h2>Infrastructure becomes visible, spatial, and social.</h2><p>The basement accommodates sorting, storage, and production; upper levels combine commercial, work, and residential programs. Instead of hiding the material route in a service core, the project lets its branches organize thresholds, enclosures, and moments of encounter. Occupants can read how waste is collected and how products re-enter daily space. The system is therefore both functional infrastructure and a public account of material transformation.</p></div>
       <div className="biochar-inhabit-grid">
         <Figure src={asset("factory.jpg")} alt="Interior of the basement biochar factory" caption="Production floor — sorting and fabrication occupy the building’s base." />
-        <Figure src={asset("inhabitation.gif")} alt="Animated interior view of people inhabiting the biochar system" caption="Inhabitation — material infrastructure and everyday activity overlap." className="biochar-motion-figure" />
+        <Figure src={asset("inhabitation.gif")} alt="Animated sequence in which a branching chute transforms an empty floor into occupied space" caption="Inhabitation sequence — infrastructure arrives first, then furniture, work, and collective occupation grow around it." className="biochar-motion-figure" />
       </div>
     </section>
 
     <section className="biochar-full biochar-rule">
       <div className="biochar-section-head"><span>06 / FROM BUILDING TO COMMUNITY</span><h2>A distributed metabolism.</h2><p>At the neighborhood scale, the vertical building system extends into horizontal collection routes and elevated gardens. Inspired by the reuse of infrastructural corridors, these branches link waste sources, productive landscapes, and sites of repair. The proposal does not claim a finished citywide solution; it offers a framework in which multiple buildings can become connected nodes, sharing material, energy, knowledge, and public space.</p></div>
-      <Figure src={asset("community-system.jpg")} alt="Community-scale biochar collection and production network" caption="Community system — buildings connect through collection routes, production sites, and shared landscapes." />
+      <Figure src={asset("hero.jpg")} alt="Axonometric view of the renovated Biochar Metabolism building" caption="Building node — the existing frame is retained while collection, fabrication, repair, and occupation accumulate inside it." />
       <Figure src={asset("public-space.jpg")} alt="Public space within the community biochar system" caption="Public landscape — productive infrastructure also creates space for collective life." className="biochar-conclusion-image" />
+    </section>
+
+    <section className="biochar-drawings biochar-rule">
+      <div className="biochar-section-head"><span>07 / ARCHITECTURAL DRAWINGS</span><h2>Program organized around the material route.</h2><p>The floor plans show how the system changes as it moves upward: production and sorting occupy the basement; collection and public circulation appear at ground level; communal, work, and residential floors organize themselves around the branching chutes.</p></div>
+      <div className="biochar-drawings-grid">
+        <Figure src={asset("plan-basement.jpg")} alt="Basement biochar factory floor plan" caption="B1 — Basement factory / sorting, storage, pyrolysis, and fabrication." />
+        <Figure src={asset("plan-ground.jpg")} alt="Ground floor plan" caption="00 — Ground floor / collection, commercial program, and public access." />
+        <Figure src={asset("plan-public.jpg")} alt="Public-space floor plan" caption="01 — Public floor / shared landscape and communal circulation." />
+        <Figure src={asset("plan-work.jpg")} alt="Workspace floor plan" caption="02 — Work floor / flexible offices organized around material branches." />
+        <Figure src={asset("plan-residential.jpg")} alt="Residential floor plan" caption="03 — Residential floor / living units and shared internal landscape." />
+      </div>
     </section>
 
     <section className="biochar-reflection biochar-rule">

@@ -53,6 +53,10 @@ test("renders Biochar as a complete research narrative", async () => {
   assert.match(html, /From waste to biochar/i);
   assert.match(html, /Building metabolism/i);
   assert.match(html, /From building to community/i);
+  assert.match(html, /Context \/ waste flows/i);
+  assert.match(html, /Architectural drawings/i);
   assert.match(html, /\/portfolio\/biochar\/renovation\.gif/);
   assert.match(html, /\/portfolio\/biochar\/community-system\.jpg/);
+  assert.match(html, /\/portfolio\/biochar\/plan-basement\.jpg/);
+  assert.doesNotMatch(html, /Prototype wall/i);
 });

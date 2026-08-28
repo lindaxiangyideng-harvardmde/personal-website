@@ -1,6 +1,6 @@
 export const projects = {
   "biochar-metabolism": {
-    number:"01", title:"Biochar Metabolism", year:"2022", tags:"Architecture / Material / Ecology", image:"/portfolio/biochar/hero.jpg", secondImage:"/portfolio/biochar/building-system.jpg",
+    number:"01", title:"Biochar Metabolism", year:"2022", tags:"Architecture / Material / Ecology", image:"/portfolio/biochar/community-system.jpg", secondImage:"/portfolio/biochar/building-system.jpg",
     lead:"A closed-loop infrastructure that converts municipal solid waste into carbon-storing building products—and lets an existing building participate in its own repair.",
     question:"Can urban waste become the material of architectural repair?",
     overview:"New York City exports and disposes of enormous quantities of municipal solid waste while construction remains one of the largest sources of greenhouse gas emissions. The project brings these two conditions into one system: biomass waste is collected locally, converted through pyrolysis, and returned as biochar additives for plaster, concrete, insulation, and 3D-printed elements.",

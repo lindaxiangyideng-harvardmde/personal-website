@@ -24,7 +24,7 @@ export const projects = {
     finding:"The result is not one optimum plan. It is a readable family of alternatives for curators and museum owners: layouts can be periodically reorganized while visitors retain multiple choices of movement, view and discovery."
   },
   "mycelium-living-facade": {
-    number:"04", title:"Mycelium Living Facade", year:"2025", tags:"Architecture / Material / Ecology", image:"/portfolio/mycelium-facade.jpg", secondImage:"/portfolio/mycelium-research.jpg",
+    number:"04", title:"Mycelium Living Facade", year:"2025", tags:"Architecture / Material / Ecology", image:"/portfolio/mycelium/hero-facade.webp", secondImage:"/portfolio/mycelium/season-summer.webp",
     lead:"A living facade that uses mycelium’s growth, maturity, and decay as an architectural clock—linking seasonal change, agricultural waste, and public life.",
     question:"Can a facade be designed as a living material cycle rather than a permanent surface?",
     overview:"The proposal begins with mycelium as both material and process. Agricultural by-products provide a substrate; branching fungal networks bind that matter into lightweight components; seasonal growth and decomposition then change the facade’s appearance and performance over time.",

@@ -76,3 +76,17 @@ test("renders Proxy Landscape as a complete watershed research narrative", async
   assert.match(html, /\/portfolio\/proxy\/outcome-west-pond-clear\.webp/);
   assert.match(html, /\/portfolio\/proxy\/closing-attenuator\.webp/);
 });
+
+test("renders Mycelium Living Facade as a complete time-based material narrative", async () => {
+  const response = await render("/work/mycelium-living-facade");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="mycelium-page"/);
+  assert.match(html, /Composite assembly/i);
+  assert.match(html, /A seasonal clock/i);
+  assert.match(html, /From prototype to city image/i);
+  assert.match(html, /\/portfolio\/mycelium\/hero-facade\.webp/);
+  assert.match(html, /\/portfolio\/mycelium\/assembly-05-return\.webp/);
+  assert.match(html, /\/portfolio\/mycelium\/season-autumn\.webp/);
+  assert.match(html, /\/portfolio\/mycelium\/city-future\.webp/);
+});

@@ -16,7 +16,7 @@ export const projects = {
     finding:"The machines do not replace the landscape with infrastructure. They make landscape labor visible: filtering runoff, catching sediment, lifting marsh, mixing algae and attenuating waves. Together they stage a gradual journey from urban material to water, marsh, soil and shared habitat."
   },
   "museum-reorganization": {
-    number:"03", title:"Museum Reorganization", year:"2023", tags:"Architecture / Computation", image:"/portfolio/museum-process.jpg", secondImage:"/portfolio/museum-analysis.jpg",
+    number:"03", title:"Museum Reorganization", year:"2023", tags:"Architecture / Computation", image:"/portfolio/museum/film-poster.webp", secondImage:"/portfolio/museum/comparison-table.webp",
     lead:"A continuous computational workflow that reorganizes exhibition rooms, finds routes, and measures visual qualities while preserving the museum’s freedom of exploration.",
     question:"Can optimization preserve, rather than reduce, spatial freedom?",
     overview:"The Kanazawa Art Museum has a fixed circular boundary and an open plan, yet irregular galleries can make navigation difficult. The research treats layout, route, and view as related problems. A genetic algorithm generates room configurations with comparable areas, then route-finding and isovist analysis test their accessibility and spatial character.",

@@ -4,6 +4,7 @@ import {notFound} from "next/navigation";
 import {projects, type ProjectSlug} from "../data";
 import BiocharProject from "./BiocharProject";
 import ProxyLandscapeProject from "./ProxyLandscapeProject";
+import MuseumReorganizationProject from "./MuseumReorganizationProject";
 import MyceliumFacadeProject from "./MyceliumFacadeProject";
 
 async function getProject(params:Promise<{slug:string}>){const {slug}=await params;return projects[slug as ProjectSlug]}
@@ -11,7 +12,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
   const project=await getProject(params); if(!project)return{}; const h=await headers(); const host=h.get("x-forwarded-host")??h.get("host")??"localhost"; const protocol=h.get("x-forwarded-proto")??"https"; const image=`${protocol}://${host}${project.image}`;
   return{title:`${project.title} — Linda Deng`,description:project.lead,openGraph:{title:`${project.title} — Linda Deng`,description:project.lead,images:[image]},twitter:{card:"summary_large_image",title:`${project.title} — Linda Deng`,description:project.lead,images:[image]}};
 }
-export default async function ProjectPage({params}:{params:Promise<{slug:string}>}){const project=await getProject(params);if(!project)notFound();if(project.number==="01")return <BiocharProject/>;if(project.number==="02")return <ProxyLandscapeProject/>;if(project.number==="04")return <MyceliumFacadeProject/>;return <main className="project-page">
+export default async function ProjectPage({params}:{params:Promise<{slug:string}>}){const project=await getProject(params);if(!project)notFound();if(project.number==="01")return <BiocharProject/>;if(project.number==="02")return <ProxyLandscapeProject/>;if(project.number==="03")return <MuseumReorganizationProject/>;if(project.number==="04")return <MyceliumFacadeProject/>;return <main className="project-page">
   <header><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
   <section className="project-title"><div><span>{project.number} / {project.year}</span><p>{project.tags}</p></div><h1>{project.title}</h1><p>{project.lead}</p></section>
   <figure className="project-main-image"><img src={project.image} alt={`${project.title} research and design spread`}/><figcaption>Prototype image extracted from portfolio PDF · final image sequence pending</figcaption></figure>

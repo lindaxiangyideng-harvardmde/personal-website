@@ -77,6 +77,22 @@ test("renders Proxy Landscape as a complete watershed research narrative", async
   assert.match(html, /\/portfolio\/proxy\/closing-attenuator\.webp/);
 });
 
+test("renders Museum Reorganization as a complete computational narrative", async () => {
+  const response = await render("/work/museum-reorganization");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="museum-page"/);
+  assert.match(html, /Generating the plan/i);
+  assert.match(html, /Routes without prescription/i);
+  assert.match(html, /Measuring experience/i);
+  assert.match(html, /Comparing alternatives/i);
+  assert.match(html, /\/portfolio\/museum\/film\.mp4/);
+  assert.match(html, /\/portfolio\/museum\/layout-optimization\.webp/);
+  assert.match(html, /\/portfolio\/museum\/routes-by-entrance\.webp/);
+  assert.match(html, /\/portfolio\/museum\/comparison-table\.webp/);
+  assert.ok(html.indexOf("/portfolio/museum/film.mp4") < html.indexOf("RESEARCH QUESTION"));
+});
+
 test("renders Mycelium Living Facade as a complete time-based material narrative", async () => {
   const response = await render("/work/mycelium-living-facade");
   assert.equal(response.status, 200);

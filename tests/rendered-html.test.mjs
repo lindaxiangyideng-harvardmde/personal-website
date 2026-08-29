@@ -120,3 +120,21 @@ test("renders Conflict in Light and Dark as a complete design narrative", async 
   assert.match(html, /\/portfolio\/conflict\/concept\.webp/);
   assert.match(html, /\/portfolio\/conflict\/building-section\.webp/);
 });
+
+test("renders Lens on the Move as a complete adaptable-dwelling narrative", async () => {
+  const response = await render("/work/lens-on-the-move");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="lens-page"/);
+  assert.match(html, /Four modes/i);
+  assert.match(html, /Adaptive envelope/i);
+  assert.match(html, /Spatial assembly/i);
+  assert.match(html, /Interior lens/i);
+  assert.match(html, /Changing ground/i);
+  for (const image of [
+    "forest-hero", "four-modes", "canopy-system", "technical-system",
+    "exploded-assembly", "plan-section", "interior-01", "interior-02",
+    "interior-03", "interior-04", "urban-mode", "campus-dusk", "campus-night",
+  ]) assert.match(html, new RegExp(`/portfolio/lens/${image}\\.webp`));
+  assert.doesNotMatch(html, /exploded dia2/i);
+});

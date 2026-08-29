@@ -40,7 +40,7 @@ export const projects = {
     finding:"The facade becomes a changing film surface. During the day, light penetrates a seemingly solid building; at night, silhouettes and interior activity are projected outward, making cultural expression part of the architecture’s public presence."
   },
   "lens-on-the-move": {
-    number:"06", title:"Lens on the Move", year:"2024", tags:"Architecture / Material", image:"/portfolio/lens-on-the-move.jpg", secondImage:"/portfolio/lens-on-the-move.jpg",
+    number:"06", title:"Lens on the Move", year:"2024", tags:"Architecture / Material", image:"/portfolio/lens/forest-hero.webp", secondImage:"/portfolio/lens/four-modes.webp",
     lead:"A transformable microhome for a nomadic photographer couple, designed to shift between travel, compact urban living, expanded rural dwelling, and collective camp life.",
     question:"Can one compact home adapt its spatial form to four modes of nomadic life?",
     overview:"The project responds to a lifestyle moving between forests, mountains, deserts, and dense cities. Instead of treating mobility as a single compressed condition, the home changes its volume, enclosure, and social capacity according to the available land and the occupants’ relationship to the surrounding landscape.",

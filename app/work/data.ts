@@ -32,7 +32,7 @@ export const projects = {
     finding:"Instead of hiding material change, the facade makes duration visible. Its value lies in an architecture that can grow, perform, weather, and return—allowing maintenance and decay to become part of the public narrative of the building."
   },
   "conflict-light-dark": {
-    number:"05", title:"Conflict in Light and Dark", year:"2023", tags:"Architecture / Material", image:"/portfolio/conflict-light-dark.jpg", secondImage:"/portfolio/conflict-light-dark.jpg",
+    number:"05", title:"Conflict in Light and Dark", year:"2023", tags:"Architecture / Material", image:"/portfolio/conflict/day.webp", secondImage:"/portfolio/conflict/building-section.webp",
     lead:"A film institution that translates the Underground Museum’s cultural tensions into contrasts between light and shadow, concrete and glass, solid and void.",
     question:"Can light and material contrast make cultural conflict spatially legible?",
     overview:"Located in Leimert Park at the meeting point of neighborhoods with different cultural identities, the project draws from the Underground Museum’s use of photography to address history, background, and struggle. A massive concrete volume creates dark, weighty rooms while glass tunnels cut through it to introduce light, views, and movement.",

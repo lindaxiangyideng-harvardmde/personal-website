@@ -106,3 +106,17 @@ test("renders Mycelium Living Facade as a complete time-based material narrative
   assert.match(html, /\/portfolio\/mycelium\/season-autumn\.webp/);
   assert.match(html, /\/portfolio\/mycelium\/city-future\.webp/);
 });
+
+test("renders Conflict in Light and Dark as a complete design narrative", async () => {
+  const response = await render("/work/conflict-light-dark");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="conflict-page"/);
+  assert.match(html, /Solid \+ void/i);
+  assert.match(html, /A vertical sequence/i);
+  assert.match(html, /Plan \+ elevation/i);
+  assert.match(html, /\/portfolio\/conflict\/day\.webp/);
+  assert.match(html, /\/portfolio\/conflict\/night\.webp/);
+  assert.match(html, /\/portfolio\/conflict\/concept\.webp/);
+  assert.match(html, /\/portfolio\/conflict\/building-section\.webp/);
+});

@@ -140,3 +140,20 @@ test("renders Lens on the Move as a complete adaptable-dwelling narrative", asyn
   assert.ok(html.indexOf("technical-system.webp") < html.indexOf("03 / ADAPTIVE ENVELOPE"));
   assert.doesNotMatch(html, /exploded dia2/i);
 });
+
+test("renders Intertwined Energy and Human Activities as a complete design narrative", async () => {
+  const response = await render("/work/future-truck-stop");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="truck-page"/);
+  assert.match(html, /From stop to field/i);
+  assert.match(html, /Energy framework/i);
+  assert.match(html, /Four modules/i);
+  assert.match(html, /Inhabited infrastructure/i);
+  assert.match(html, /Phased ground/i);
+  for (const asset of [
+    "hero.webp", "site-growth.mp4", "expansion.gif", "system-exploded.webp",
+    "panel-assembly.mp4", "module-01.gif", "module-02.mp4", "module-03.mp4",
+    "module-04.mp4", "phase-01.webp", "phase-02.webp", "phase-03.webp",
+  ]) assert.match(html, new RegExp(`/portfolio/truck-stop/${asset.replace(".", "\\.")}`));
+});

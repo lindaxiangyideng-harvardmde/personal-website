@@ -136,5 +136,7 @@ test("renders Lens on the Move as a complete adaptable-dwelling narrative", asyn
     "exploded-assembly", "plan-section", "interior-01", "interior-02",
     "interior-03", "interior-04", "urban-mode", "campus-dusk", "campus-night",
   ]) assert.match(html, new RegExp(`/portfolio/lens/${image}\\.webp`));
+  assert.ok(html.indexOf("02 / SPATIAL ASSEMBLY") < html.indexOf("03 / ADAPTIVE ENVELOPE"));
+  assert.ok(html.indexOf("technical-system.webp") < html.indexOf("03 / ADAPTIVE ENVELOPE"));
   assert.doesNotMatch(html, /exploded dia2/i);
 });

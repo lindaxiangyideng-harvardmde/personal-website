@@ -27,6 +27,6 @@ export default function HopeInGapProject(){return <main className="gap-page">
 
   <section className="gap-reflection gap-rule"><span>DESIGN POSITION</span><h2>The prototype treats leftover land as a civic resource.</h2><p>Hope in Gap does not depend on one exceptional site or one monumental building. Its value lies in repetition with variation: prefabrication accelerates delivery, while layered porosity keeps each dense insertion open to climate, neighborhood, and collective life.</p></section>
 
-  <section className="gap-next"><a href="/work">Back to selected work ↗</a><a href="/work/biochar-metabolism">Return to project 01 — Biochar Metabolism →</a></section>
+  <section className="gap-next"><a href="/work">Back to selected work ↗</a><a href="/work/maas-profit-analyzer">Next project — MaaS Profit Analyzer →</a></section>
   <footer><span>LINDA DENG</span><span>HOPE IN GAP</span><span>2020</span></footer>
 </main>}

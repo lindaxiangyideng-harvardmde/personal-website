@@ -10,6 +10,7 @@ const additionalWork = [
   { number: "06", title: "Lens on the Move", slug: "lens-on-the-move", image: "/portfolio/lens-on-the-move.jpg", tags: "Architecture / Material", question: "Mobility → adaptation → dwelling", year: "2024" },
   { number: "07", title: "Intertwined Energy and Human Activities", slug: "future-truck-stop", image: "/portfolio/future-truck-stop.jpg", tags: "Architecture / Ecology", question: "Energy → infrastructure → human activity", year: "2023" },
   { number: "08", title: "Hope in Gap", slug: "hope-in-gap", image: "/portfolio/hope-in-gap.jpg", tags: "Architecture", question: "Urban gaps → modular housing → community", year: "2020" },
+  { number: "09", title: "MaaS Ecosystem Profit Analyzer", slug: "maas-profit-analyzer", image: "/portfolio/maas/dashboard-top.png", tags: "Data Product / Financial Analytics", question: "Workbooks → audit → decision", year: "2026" },
 ] as const;
 
 function MotionPreview({ type }: { type: (typeof work)[number]["motion"] }) {
@@ -63,13 +64,6 @@ export default function WorkIndex() {
             <h2>{project.title}</h2><h3>{project.question}</h3><small>View project ↗</small>
           </div>
         </a>)}
-        <article className="additional-project ongoing-project" aria-label="Data Product, ongoing research">
-          <figure className="data-placeholder" aria-hidden="true"><div className="data-axis" /><i /><i /><i /><i /><i /><span>ONGOING / 2026</span></figure>
-          <div className="additional-project-copy">
-            <span>09</span><p>Computation</p>
-            <h2>Data Product</h2><h3>Data → interface → decision</h3><small>In development</small>
-          </div>
-        </article>
       </div>
     </section>
 

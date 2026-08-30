@@ -25,7 +25,7 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.doesNotMatch(html, /id="work"/);
 });
 
-test("serves the work index, about page, and all eight project routes", async () => {
+test("serves the work index, about page, and all nine project routes", async () => {
   const routes = [
     ["/work", /Selected[\s\S]*research systems/],
     ["/about", /Designing relationships/],
@@ -37,6 +37,7 @@ test("serves the work index, about page, and all eight project routes", async ()
     ["/work/lens-on-the-move", /Lens on the Move/],
     ["/work/future-truck-stop", /Intertwined Energy and Human Activities/],
     ["/work/hope-in-gap", /Hope in Gap/],
+    ["/work/maas-profit-analyzer", /MaaS Ecosystem Profit Analyzer/],
   ];
   for (const [path, expected] of routes) {
     const response = await render(path);
@@ -173,4 +174,19 @@ test("renders Hope in Gap as a complete supportive-housing narrative", async () 
     "hero", "figure-ground", "urban-oblique", "site-collage", "unit-family",
     "unit-arrangements", "porosity-system", "unit-types", "serial-sections",
   ]) assert.match(html, new RegExp(`/portfolio/hope/${image}\\.webp`));
+});
+
+test("renders MaaS Ecosystem Profit Analyzer as a complete data-product narrative", async () => {
+  const response = await render("/work/maas-profit-analyzer");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="maas-page"/);
+  assert.match(html, /Auditable workflow/i);
+  assert.match(html, /Calculation engine/i);
+  assert.match(html, /Decision surface/i);
+  assert.match(html, /System architecture/i);
+  assert.match(html, /Reliability by design/i);
+  for (const image of ["dashboard-top", "imports", "pricing", "incentives", "analysis", "dashboard-suppliers", "dashboard-charts", "dashboard-quality"]) {
+    assert.match(html, new RegExp(`/portfolio/maas/${image}\\.png`));
+  }
 });

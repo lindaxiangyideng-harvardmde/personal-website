@@ -62,6 +62,14 @@ export const projects = {
     overview:"The project begins with two constraints affecting housing in Los Angeles: limited affordable land and the long duration of conventional construction. It identifies interstitial sites in Lincoln Heights—from building gaps and parking-lot edges to narrow street strips—and combines them with prefabricated modules that can be adapted to different site conditions.",
     stages:[["01","Locate","Identify leftover sites that conventional housing development overlooks."],["02","Standardize","Use prefabricated modules to reduce construction time and cost."],["03","Carve","Create different depths of void space within and between the units."],["04","Layer","Combine light, ventilation, views, circulation, and shared outdoor rooms."],["05","Replicate","Adapt the prototype to gaps with different dimensions and urban conditions."]],
     finding:"Layered porosity allows a dense modular system to remain open to light, air, views, and social contact. The proposal treats the city’s leftover spaces not as isolated exceptions, but as a distributed housing resource."
+  },
+  "maas-profit-analyzer": {
+    number:"09", title:"MaaS Ecosystem Profit Analyzer", year:"2026", tags:"Data Product / Financial Analytics / Full-stack", image:"/portfolio/maas/dashboard-top.png", secondImage:"/portfolio/maas/dashboard-charts.png",
+    lead:"An auditable analytics product that transforms monthly AI inference billing workbooks into supplier-level profit and margin insights.",
+    question:"How can fragmented billing data become a trustworthy profitability decision surface?",
+    overview:"The product guides an analyst from workbook ingestion through field mapping, validation, pricing, supplier incentives, deterministic calculation, and a filterable profitability dashboard.",
+    stages:[["01","Stage","Keep uploaded workbooks separate from durable records."],["02","Validate","Expose mappings, warnings, fallbacks, and rejected rows."],["03","Configure","Apply model-and-bucket prices and supplier incentives."],["04","Calculate","Create an immutable, reproducible analysis run."],["05","Decide","Compare revenue, partner payment, profit, and margin."]],
+    finding:"A data product becomes useful when its conclusions can be traced back through the workflow that produced them."
   }
 } as const;
 

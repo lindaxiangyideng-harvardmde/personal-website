@@ -56,7 +56,7 @@ export const projects = {
     finding:"The truck stop becomes a productive landscape where machines and human activities do not compete for space. Energy capture, ecological performance, and driver experience grow together as one adaptable infrastructure."
   },
   "hope-in-gap": {
-    number:"08", title:"Hope in Gap", year:"2020", tags:"Architecture", image:"/portfolio/hope-in-gap.jpg", secondImage:"/portfolio/hope-in-gap.jpg",
+    number:"08", title:"Hope in Gap", year:"2020", tags:"Architecture", image:"/portfolio/hope/hero.webp", secondImage:"/portfolio/hope/site-collage.webp",
     lead:"A supportive-housing prototype that occupies overlooked urban gaps with prefabricated units organized through layered indoor and outdoor porosity.",
     question:"Can leftover urban space become a repeatable framework for supportive housing?",
     overview:"The project begins with two constraints affecting housing in Los Angeles: limited affordable land and the long duration of conventional construction. It identifies interstitial sites in Lincoln Heights—from building gaps and parking-lot edges to narrow street strips—and combines them with prefabricated modules that can be adapted to different site conditions.",

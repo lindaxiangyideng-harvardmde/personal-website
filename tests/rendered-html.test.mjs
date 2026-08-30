@@ -159,3 +159,18 @@ test("renders Intertwined Energy and Human Activities as a complete design narra
   assert.ok(html.indexOf("site-growth.mp4") < html.indexOf("DESIGN PREMISE"));
   assert.doesNotMatch(html, /module-0[1-4]-exploded\.webp/);
 });
+
+test("renders Hope in Gap as a complete supportive-housing narrative", async () => {
+  const response = await render("/work/hope-in-gap");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="gap-page"/);
+  assert.match(html, /A distributed site/i);
+  assert.match(html, /Prefabricated kit/i);
+  assert.match(html, /Layered porosity/i);
+  assert.match(html, /The narrow slab/i);
+  for (const image of [
+    "hero", "figure-ground", "urban-oblique", "site-collage", "unit-family",
+    "unit-arrangements", "porosity-system", "unit-types", "serial-sections",
+  ]) assert.match(html, new RegExp(`/portfolio/hope/${image}\\.webp`));
+});

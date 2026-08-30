@@ -156,4 +156,6 @@ test("renders Intertwined Energy and Human Activities as a complete design narra
     "panel-assembly.mp4", "module-01.gif", "module-02.mp4", "module-03.mp4",
     "module-04.mp4", "phase-01.webp", "phase-02.webp", "phase-03.webp",
   ]) assert.match(html, new RegExp(`/portfolio/truck-stop/${asset.replace(".", "\\.")}`));
+  assert.ok(html.indexOf("site-growth.mp4") < html.indexOf("DESIGN PREMISE"));
+  assert.doesNotMatch(html, /module-0[1-4]-exploded\.webp/);
 });

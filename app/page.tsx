@@ -15,6 +15,7 @@ type ProjectScene = {
   image: string;
   video?: string;
   transitionFrames?: { from: string; to: string };
+  seasonalFrames?: readonly { src: string; label: string }[];
   backdropImage: string;
   backdropPosition: string;
   fields: string;
@@ -26,7 +27,12 @@ const projectScenes: readonly ProjectScene[] = [
   { title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar-architecture.jpg", backdropImage: "/portfolio/biochar/community-system.jpg", backdropPosition: "46% 48%", fields: "Architecture / Material / Ecology", caption: "Waste → carbon → building repair", motion: "biochar" },
   { title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy/home/spontaneous.jpg", transitionFrames: { from: "/portfolio/proxy/home/spontaneous.jpg", to: "/portfolio/proxy/home/unspontaneous.jpg" }, backdropImage: "/portfolio/proxy/home/nyc-watershed-background.jpg", backdropPosition: "50% 54%", fields: "Architecture / Computation / Ecology", caption: "Water → evidence → coastal repair", motion: null },
   { title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", video: "/portfolio/museum/home-introduction-07-16.mp4", backdropImage: "/portfolio/museum/home-user-example-background.jpg", backdropPosition: "50% 48%", fields: "Architecture / Computation", caption: "Plan → routes → spatial choice", motion: null },
-  { title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium-facade.jpg", backdropImage: "/portfolio/mycelium/hero-facade.webp", backdropPosition: "62% 45%", fields: "Architecture / Material / Ecology", caption: "Growth → maturity → decay", motion: "mycelium" },
+  { title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium/home/season-winter.jpg", seasonalFrames: [
+    { src: "/portfolio/mycelium/home/season-winter.jpg", label: "Winter" },
+    { src: "/portfolio/mycelium/home/season-spring.jpg", label: "Spring" },
+    { src: "/portfolio/mycelium/home/season-summer.jpg", label: "Summer" },
+    { src: "/portfolio/mycelium/home/season-autumn.jpg", label: "Autumn" },
+  ], backdropImage: "/portfolio/mycelium/home/facade-context-background.jpg", backdropPosition: "50% 48%", fields: "Architecture / Material / Ecology", caption: "Growth → maturity → decay", motion: null },
 ] as const;
 
 function HeroMotion({ type }: { type: NonNullable<ProjectScene["motion"]> }) {
@@ -55,7 +61,11 @@ function ProjectMedia({ project, isActive }: { project: ProjectScene; isActive: 
 
   return (
     <figure className="home-project-media">
-      {project.transitionFrames ? (
+      {project.seasonalFrames ? (
+        <div className="mycelium-season-sequence" aria-label="Mycelium facade changing from winter through autumn">
+          {project.seasonalFrames.map(frame => <img className="mycelium-season-frame" src={frame.src} alt={`${frame.label} state of the living mycelium facade`} loading="eager" decoding="async" key={frame.src} />)}
+        </div>
+      ) : project.transitionFrames ? (
         <div className="watershed-transition" aria-label="Spontaneous watershed transforming into the unspontaneous urban watershed">
           <img className="watershed-map watershed-map-from" src={project.transitionFrames.from} alt="Spontaneous watershed across Jamaica Bay" />
           <img className="watershed-map watershed-map-to" src={project.transitionFrames.to} alt="Unspontaneous watershed shaped by urban infrastructure" />

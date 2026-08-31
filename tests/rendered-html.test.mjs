@@ -47,6 +47,25 @@ test("serves the work index, about page, and all ten project routes", async () =
   }
 });
 
+test("renders the curated Selected Work cover system", async () => {
+  const response = await render("/work");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const asset of [
+    "/portfolio/biochar/community-system.jpg",
+    "/portfolio/proxy/hero-map-spontaneous-clear.webp",
+    "/portfolio/museum/film-poster.webp",
+    "/portfolio/mycelium/hero-facade.webp",
+    "/portfolio/conflict/day.webp",
+    "/portfolio/lens/forest-hero.webp",
+    "/portfolio/truck-stop/hero.webp",
+    "/portfolio/hope/hero.webp",
+    "/portfolio/maas/dashboard-top.png",
+    "/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png",
+  ]) assert.match(html, new RegExp(asset.replaceAll("/", "\\/")));
+  assert.doesNotMatch(html, /Final images will replace these portfolio spreads/);
+});
+
 test("renders Biochar as a complete research narrative", async () => {
   const response = await render("/work/biochar-metabolism");
   assert.equal(response.status, 200);

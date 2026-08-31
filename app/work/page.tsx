@@ -1,15 +1,15 @@
 const work = [
-  { number: "01", title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar-architecture.jpg", tags: "Architecture / Material / Ecology", question: "Waste → carbon → building repair", motion: "biochar" },
-  { number: "02", title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy-map.jpg", tags: "Architecture / Computation / Ecology", question: "Water → evidence → coastal repair", motion: "proxy" },
-  { number: "03", title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum-process.jpg", tags: "Architecture / Computation", question: "Plan → routes → spatial choice", motion: "museum" },
-  { number: "04", title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium-facade.jpg", tags: "Architecture / Material / Ecology", question: "Growth → maturity → decay", motion: "mycelium" },
+  { number: "01", title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar/community-system.jpg", tags: "Architecture / Material / Ecology", question: "Waste → carbon → building repair", motion: "biochar" },
+  { number: "02", title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy/hero-map-spontaneous-clear.webp", tags: "Architecture / Computation / Ecology", question: "Water → evidence → coastal repair", motion: "proxy" },
+  { number: "03", title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", tags: "Architecture / Computation", question: "Plan → routes → spatial choice", motion: "museum" },
+  { number: "04", title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium/hero-facade.webp", tags: "Architecture / Material / Ecology", question: "Growth → maturity → decay", motion: "mycelium" },
 ] as const;
 
 const additionalWork = [
-  { number: "05", title: "Conflict in Light and Dark", slug: "conflict-light-dark", image: "/portfolio/conflict-light-dark.jpg", tags: "Architecture / Material", question: "Light → contrast → cultural expression", year: "2023" },
-  { number: "06", title: "Lens on the Move", slug: "lens-on-the-move", image: "/portfolio/lens-on-the-move.jpg", tags: "Architecture / Material", question: "Mobility → adaptation → dwelling", year: "2024" },
-  { number: "07", title: "Intertwined Energy and Human Activities", slug: "future-truck-stop", image: "/portfolio/future-truck-stop.jpg", tags: "Architecture / Ecology", question: "Energy → infrastructure → human activity", year: "2023" },
-  { number: "08", title: "Hope in Gap", slug: "hope-in-gap", image: "/portfolio/hope-in-gap.jpg", tags: "Architecture", question: "Urban gaps → modular housing → community", year: "2020" },
+  { number: "05", title: "Conflict in Light and Dark", slug: "conflict-light-dark", image: "/portfolio/conflict/day.webp", tags: "Architecture / Material", question: "Light → contrast → cultural expression", year: "2023" },
+  { number: "06", title: "Lens on the Move", slug: "lens-on-the-move", image: "/portfolio/lens/forest-hero.webp", tags: "Architecture / Material", question: "Mobility → adaptation → dwelling", year: "2024" },
+  { number: "07", title: "Intertwined Energy and Human Activities", slug: "future-truck-stop", image: "/portfolio/truck-stop/hero.webp", tags: "Architecture / Ecology", question: "Energy → infrastructure → human activity", year: "2023" },
+  { number: "08", title: "Hope in Gap", slug: "hope-in-gap", image: "/portfolio/hope/hero.webp", tags: "Architecture", question: "Urban gaps → modular housing → community", year: "2020" },
   { number: "09", title: "MaaS Ecosystem Profit Analyzer", slug: "maas-profit-analyzer", image: "/portfolio/maas/dashboard-top.png", tags: "Data Product / Financial Analytics", question: "Workbooks → audit → decision", year: "2026" },
   { number: "10", title: "Second World", slug: "second-world", image: "/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png", tags: "Data Visualization / Computation", question: "Intention → digital behavior → body response", year: "2026" },
 ] as const;
@@ -32,11 +32,11 @@ export default function WorkIndex() {
     <section className="index-intro">
       <span>01 / INDEX</span>
       <h1>Selected<br /><i>research systems.</i></h1>
-      <p>Each preview animates the project’s central method—not a decorative effect. Final images will replace these portfolio spreads after the visual direction is confirmed.</p>
+      <p>Each cover is selected for the index: research images explain a method, hero views establish a spatial proposition, and digital projects retain their native visual language.</p>
     </section>
 
     <section className="project-index" aria-label="Selected projects">
-      {work.map(project => <a href={`/work/${project.slug}`} className={`index-project preview-${project.motion}`} key={project.slug}>
+      {work.map(project => <a href={`/work/${project.slug}`} className={`index-project preview-${project.motion} project-${project.number}`} key={project.slug}>
         <figure>
           <img src={project.image} alt={`${project.title} portfolio preview`} />
           <MotionPreview type={project.motion} />
@@ -58,8 +58,8 @@ export default function WorkIndex() {
         <div><h2 id="additional-work-title">Further studies.</h2><p>A quieter index of spatial studies, adaptable systems, and work in development.</p></div>
       </header>
       <div className="additional-work-grid">
-        {additionalWork.map(project => <a href={`/work/${project.slug}`} className="additional-project" key={project.slug}>
-          <figure><img src={project.image} alt={`${project.title} portfolio spread`} /><figcaption>{project.year} / PORTFOLIO STUDY</figcaption></figure>
+        {additionalWork.map(project => <a href={`/work/${project.slug}`} className={`additional-project project-${project.number}`} key={project.slug}>
+          <figure><img src={project.image} alt={`${project.title} selected project cover`} /><figcaption>{project.year} / PROJECT VIEW</figcaption></figure>
           <div className="additional-project-copy">
             <span>{project.number}</span><p>{project.tags}</p>
             <h2>{project.title}</h2><h3>{project.question}</h3><small>View project ↗</small>

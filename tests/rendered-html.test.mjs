@@ -28,8 +28,9 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /class="watershed-transition"/);
   assert.match(html, /\/portfolio\/proxy\/home\/spontaneous\.jpg/);
   assert.match(html, /\/portfolio\/proxy\/home\/unspontaneous\.jpg/);
-  assert.match(html, /\/portfolio\/museum\/film\.mp4/);
+  assert.match(html, /\/portfolio\/museum\/home-introduction-07-16\.mp4/);
   assert.match(html, /\/portfolio\/museum\/film-poster\.webp/);
+  assert.match(html, /\/portfolio\/museum\/home-user-example-background\.jpg/);
   for (const backdrop of [
     "/portfolio/biochar/community-system.jpg",
     "/portfolio/proxy/home/nyc-watershed-background.jpg",

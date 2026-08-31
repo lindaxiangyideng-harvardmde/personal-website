@@ -14,6 +14,7 @@ type ProjectScene = {
   slug: string;
   image: string;
   video?: string;
+  transitionFrames?: { from: string; to: string };
   backdropImage: string;
   backdropPosition: string;
   fields: string;
@@ -23,7 +24,7 @@ type ProjectScene = {
 
 const projectScenes: readonly ProjectScene[] = [
   { title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar-architecture.jpg", backdropImage: "/portfolio/biochar/community-system.jpg", backdropPosition: "46% 48%", fields: "Architecture / Material / Ecology", caption: "Waste → carbon → building repair", motion: "biochar" },
-  { title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy-map.jpg", backdropImage: "/portfolio/proxy/closing-mixer.webp", backdropPosition: "52% 54%", fields: "Architecture / Computation / Ecology", caption: "Water → evidence → coastal repair", motion: "proxy" },
+  { title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy/home/spontaneous.jpg", transitionFrames: { from: "/portfolio/proxy/home/spontaneous.jpg", to: "/portfolio/proxy/home/unspontaneous.jpg" }, backdropImage: "/portfolio/proxy/home/nyc-watershed-background.jpg", backdropPosition: "50% 54%", fields: "Architecture / Computation / Ecology", caption: "Water → evidence → coastal repair", motion: null },
   { title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", video: "/portfolio/museum/film.mp4", backdropImage: "/portfolio/museum/film-poster.webp", backdropPosition: "50% 50%", fields: "Architecture / Computation", caption: "Plan → routes → spatial choice", motion: null },
   { title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium-facade.jpg", backdropImage: "/portfolio/mycelium/hero-facade.webp", backdropPosition: "62% 45%", fields: "Architecture / Material / Ecology", caption: "Growth → maturity → decay", motion: "mycelium" },
 ] as const;
@@ -54,7 +55,18 @@ function ProjectMedia({ project, isActive }: { project: ProjectScene; isActive: 
 
   return (
     <figure className="home-project-media">
-      {project.video ? (
+      {project.transitionFrames ? (
+        <div className="watershed-transition" aria-label="Spontaneous watershed transforming into the unspontaneous urban watershed">
+          <img className="watershed-map watershed-map-from" src={project.transitionFrames.from} alt="Spontaneous watershed across Jamaica Bay" />
+          <img className="watershed-map watershed-map-to" src={project.transitionFrames.to} alt="Unspontaneous watershed shaped by urban infrastructure" />
+          <div className="watershed-flow" aria-hidden="true">
+            {[
+              [18, 35], [31, 57], [46, 31], [57, 62], [70, 42], [82, 66], [64, 22],
+            ].map(([x, y], index) => <i key={`${x}-${y}`} style={{ "--x": `${x}%`, "--y": `${y}%`, "--delay": `${index * .09}s` } as CSSProperties} />)}
+          </div>
+          <div className="watershed-state" aria-hidden="true"><span>SPONTANEOUS / NATURAL FLOW</span><span>UNSPONTANEOUS / URBAN CAPTURE</span></div>
+        </div>
+      ) : project.video ? (
         <video ref={videoRef} src={project.video} poster={project.image} muted loop playsInline preload="metadata" aria-label={`${project.title} film excerpt`} />
       ) : (
         <img src={project.image} alt={`${project.title} project cover`} />
@@ -111,7 +123,7 @@ export default function Home() {
           <div className="system-reading" aria-live="polite"><span>INPUT → TRANSFORMATION → EFFECT</span><p>{fields[active].name}</p><small>{fields[active].note}</small></div>
         </div>
 
-        {projectScenes.map((project, index) => <article className={`home-project-scene ${scene === index + 1 ? "is-current" : ""}`} aria-hidden={scene !== index + 1} key={project.slug}>
+        {projectScenes.map((project, index) => <article className={`home-project-scene ${scene === index + 1 ? "is-current" : ""}`} data-project={project.slug} aria-hidden={scene !== index + 1} key={project.slug}>
           <div className="home-project-backdrop" style={{ backgroundImage: `url("${project.backdropImage}")`, backgroundPosition: project.backdropPosition }} aria-hidden="true" />
           <div className="home-project-glow" aria-hidden="true" />
           <a className="home-project-link" href={`/work/${project.slug}`} tabIndex={scene === index + 1 ? 0 : -1}>

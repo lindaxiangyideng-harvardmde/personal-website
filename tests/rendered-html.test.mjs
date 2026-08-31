@@ -23,12 +23,16 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /spatial propositions/);
   assert.match(html, /href="\/work"/);
   assert.match(html, /class="home-project-backdrop"/);
+  assert.match(html, /portfolio\/proxy\/home\/nyc-watershed-background\.jpg/);
   assert.match(html, /class="home-project-glow"/);
+  assert.match(html, /class="watershed-transition"/);
+  assert.match(html, /\/portfolio\/proxy\/home\/spontaneous\.jpg/);
+  assert.match(html, /\/portfolio\/proxy\/home\/unspontaneous\.jpg/);
   assert.match(html, /\/portfolio\/museum\/film\.mp4/);
   assert.match(html, /\/portfolio\/museum\/film-poster\.webp/);
   for (const backdrop of [
     "/portfolio/biochar/community-system.jpg",
-    "/portfolio/proxy/closing-mixer.webp",
+    "/portfolio/proxy/home/nyc-watershed-background.jpg",
     "/portfolio/mycelium/hero-facade.webp",
   ]) assert.match(html, new RegExp(backdrop.replaceAll("/", "\\/")));
   assert.doesNotMatch(html, /\/portfolio\/museum-process\.jpg/);

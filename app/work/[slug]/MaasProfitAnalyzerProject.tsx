@@ -43,6 +43,6 @@ export default function MaasProfitAnalyzerProject(){return <main className="maas
 
   <section className="maas-reflection maas-rule"><span>PRODUCT POSITION</span><h2>Trust is part of the product’s output.</h2><p>The prototype is intentionally local-first: it can process financial workbooks without requiring a separate database service, and each completed run remains reproducible. A hosted production version would add authentication, role-based access, durable object storage, automated tests, observability, and controlled result sharing.</p><a href="https://youtu.be/z7cDvAcKSpk" target="_blank" rel="noreferrer">Watch product demo ↗</a></section>
 
-  <section className="maas-next"><a href="/work">Back to selected work ↗</a><a href="/work/biochar-metabolism">Return to project 01 — Biochar Metabolism →</a></section>
+  <section className="maas-next"><a href="/work">Back to selected work ↗</a><a href="/work/second-world">Next project — Second World →</a></section>
   <footer><span>LINDA DENG</span><span>MAAS ECOSYSTEM PROFIT ANALYZER</span><span>2026</span></footer>
 </main>}

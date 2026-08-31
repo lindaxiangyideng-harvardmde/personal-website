@@ -70,6 +70,14 @@ export const projects = {
     overview:"The product guides an analyst from workbook ingestion through field mapping, validation, pricing, supplier incentives, deterministic calculation, and a filterable profitability dashboard.",
     stages:[["01","Stage","Keep uploaded workbooks separate from durable records."],["02","Validate","Expose mappings, warnings, fallbacks, and rejected rows."],["03","Configure","Apply model-and-bucket prices and supplier incentives."],["04","Calculate","Create an immutable, reproducible analysis run."],["05","Decide","Compare revenue, partner payment, profit, and margin."]],
     finding:"A data product becomes useful when its conclusions can be traced back through the workflow that produced them."
+  },
+  "second-world": {
+    number:"10", title:"Second World", year:"2026", tags:"Data Visualization / Computation / Behavioral Research", image:"/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png", secondImage:"/portfolio/second-world/p5_animation/previews/second-world-animation-38s.png",
+    lead:"A synchronized behavioral portrait comparing what I intended to do, what my digital avatar actually did, and how my body unconsciously responded during one recorded gaming session.",
+    question:"How can one experience be read through intention, digital behavior, and bodily response at the same time?",
+    overview:"Two independently logged workbooks are transformed into six synchronized temporal channels and compressed from a 2,996-second recording into a deterministic 60-second animation.",
+    stages:[["01","Record","Log digital actions, intention, posture, gesture, trigger, and quest state."],["02","Audit","Separate mixed temporal grains and preserve uncertainty."],["03","Synchronize","Align independent physical and digital clocks."],["04","Encode","Translate behavioral channels into routes, dots, ripples, and events."],["05","Compare","Inspect the complete session and quest-level portraits."]],
+    finding:"The visualization behaves as an instrument for reading one recorded experience—not as a dashboard and not as a literal game map."
   }
 } as const;
 

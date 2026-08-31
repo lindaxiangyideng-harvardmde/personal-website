@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SECOND WORLD — Session Timeline and Quest Portraits</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <main class="project-shell">
+      <section class="quest-portrait-section" aria-labelledby="quest-portrait-title">
+        <div class="section-intro">
+          <div>
+            <h2 id="quest-portrait-title">Completed quest portraits</h2>
+          </div>
+          <p>Hover over a quest to inspect its actions and physical response. All actions remain visible; nonzero body energy pulses at its recorded position.</p>
+        </div>
+
+        <div class="canvas-stage" aria-label="Three completed quest portraits with animated stationary physical ripples">
+          <div id="canvas-holder"></div>
+          <p id="loading-message">Loading processed data…</p>
+          <section id="quest-detail" class="detail-window" aria-label="Animated quest detail" hidden>
+            <div class="detail-canvas-stage">
+              <canvas id="detail-canvas" width="2400" height="1000"></canvas>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SECOND WORLD — Data Animation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <main class="project-shell">
+      <header class="project-header">
+        <div>
+          <p class="eyebrow" id="animation-eyebrow">ONE RECORDED SESSION / DATA ANIMATION</p>
+          <h1>SECOND WORLD</h1>
+          <p class="subtitle">A Behavioral Trace Between My Body and My Digital Self</p>
+        </div>
+
+        <div class="frame-controls" role="group" aria-label="Animation controls">
+          <button type="button" id="play-toggle" class="primary-control" aria-pressed="true">Pause</button>
+          <button type="button" id="restart">Restart</button>
+          <button type="button" data-frame="15" aria-pressed="false">
+            <span>01</span> 15 sec
+          </button>
+          <button type="button" data-frame="38" aria-pressed="false">
+            <span>02</span> 38 sec
+          </button>
+          <button type="button" data-frame="60" aria-pressed="false">
+            <span>03</span> 60 sec
+          </button>
+          <button type="button" id="save-frame" class="save-button">Save PNG</button>
+        </div>
+      </header>
+
+      <section class="canvas-stage" aria-label="SECOND WORLD one-minute data visualization animation">
+        <div id="canvas-holder"></div>
+        <p id="loading-message">Loading processed data…</p>
+      </section>
+
+      <section class="timeline-control" aria-label="Animation timeline">
+        <label for="time-scrubber">Animation time</label>
+        <input id="time-scrubber" type="range" min="0" max="60" step="0.01" value="0" />
+        <output id="time-output" for="time-scrubber">00.00 sec</output>
+      </section>
+
+      <footer class="project-footer">
+        <p><kbd>Space</kbd> play/pause · <kbd>R</kbd> restart · <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd> inspect key moments.</p>
+        <p>Fixed seed: <code>250811</code> · Data: <code>processed_data/second_world_derived_data.json</code></p>
+      </footer>
+    </main>
+
+    <script src="sketch.js?v=20-second-playback"></script>
+  </body>
+</html>

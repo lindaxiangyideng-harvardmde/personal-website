@@ -11,6 +11,7 @@ const additionalWork = [
   { number: "07", title: "Intertwined Energy and Human Activities", slug: "future-truck-stop", image: "/portfolio/future-truck-stop.jpg", tags: "Architecture / Ecology", question: "Energy → infrastructure → human activity", year: "2023" },
   { number: "08", title: "Hope in Gap", slug: "hope-in-gap", image: "/portfolio/hope-in-gap.jpg", tags: "Architecture", question: "Urban gaps → modular housing → community", year: "2020" },
   { number: "09", title: "MaaS Ecosystem Profit Analyzer", slug: "maas-profit-analyzer", image: "/portfolio/maas/dashboard-top.png", tags: "Data Product / Financial Analytics", question: "Workbooks → audit → decision", year: "2026" },
+  { number: "10", title: "Second World", slug: "second-world", image: "/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png", tags: "Data Visualization / Computation", question: "Intention → digital behavior → body response", year: "2026" },
 ] as const;
 
 function MotionPreview({ type }: { type: (typeof work)[number]["motion"] }) {

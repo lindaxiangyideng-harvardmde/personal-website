@@ -25,7 +25,7 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.doesNotMatch(html, /id="work"/);
 });
 
-test("serves the work index, about page, and all nine project routes", async () => {
+test("serves the work index, about page, and all ten project routes", async () => {
   const routes = [
     ["/work", /Selected[\s\S]*research systems/],
     ["/about", /Designing relationships/],
@@ -38,6 +38,7 @@ test("serves the work index, about page, and all nine project routes", async () 
     ["/work/future-truck-stop", /Intertwined Energy and Human Activities/],
     ["/work/hope-in-gap", /Hope in Gap/],
     ["/work/maas-profit-analyzer", /MaaS Ecosystem Profit Analyzer/],
+    ["/work/second-world", /Second World/],
   ];
   for (const [path, expected] of routes) {
     const response = await render(path);
@@ -188,5 +189,23 @@ test("renders MaaS Ecosystem Profit Analyzer as a complete data-product narrativ
   assert.match(html, /Reliability by design/i);
   for (const image of ["dashboard-top", "imports", "pricing", "incentives", "analysis", "dashboard-suppliers", "dashboard-charts", "dashboard-quality"]) {
     assert.match(html, new RegExp(`/portfolio/maas/${image}\\.png`));
+  }
+});
+
+test("renders Second World as a complete behavioral data-visualization narrative", async () => {
+  const response = await render("/work/second-world");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="second-world-page"/);
+  assert.match(html, /Six synchronized channels/i);
+  assert.match(html, /From log to auditable data/i);
+  assert.match(html, /Visual grammar/i);
+  assert.match(html, /One session, accumulating/i);
+  assert.match(html, /Quest portraits/i);
+  assert.match(html, /Data integrity/i);
+  assert.match(html, /p5_animation\//);
+  assert.match(html, /p5_quest_comparison\//);
+  for (const frame of ["15s", "38s", "60s", "forward-energy-42.5s"]) {
+    assert.match(html, new RegExp(`second-world-animation-${frame}\\.png`));
   }
 });

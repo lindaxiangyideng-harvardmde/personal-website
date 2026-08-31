@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 
 const fields = [
   { name: "Architecture", note: "spatial effect" },
@@ -9,18 +9,59 @@ const fields = [
   { name: "Ecology", note: "living relation" },
 ] as const;
 
-const projectScenes = [
-  { title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar-architecture.jpg", fields: "Architecture / Material / Ecology", caption: "Waste → carbon → building repair", motion: "biochar" },
-  { title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy-map.jpg", fields: "Architecture / Computation / Ecology", caption: "Water → evidence → coastal repair", motion: "proxy" },
-  { title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum-process.jpg", fields: "Architecture / Computation", caption: "Plan → routes → spatial choice", motion: "museum" },
-  { title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium-facade.jpg", fields: "Architecture / Material / Ecology", caption: "Growth → maturity → decay", motion: "mycelium" },
+type ProjectScene = {
+  title: string;
+  slug: string;
+  image: string;
+  video?: string;
+  backdropImage: string;
+  backdropPosition: string;
+  fields: string;
+  caption: string;
+  motion: "biochar" | "proxy" | "mycelium" | null;
+};
+
+const projectScenes: readonly ProjectScene[] = [
+  { title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar-architecture.jpg", backdropImage: "/portfolio/biochar/community-system.jpg", backdropPosition: "46% 48%", fields: "Architecture / Material / Ecology", caption: "Waste → carbon → building repair", motion: "biochar" },
+  { title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy-map.jpg", backdropImage: "/portfolio/proxy/closing-mixer.webp", backdropPosition: "52% 54%", fields: "Architecture / Computation / Ecology", caption: "Water → evidence → coastal repair", motion: "proxy" },
+  { title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", video: "/portfolio/museum/film.mp4", backdropImage: "/portfolio/museum/film-poster.webp", backdropPosition: "50% 50%", fields: "Architecture / Computation", caption: "Plan → routes → spatial choice", motion: null },
+  { title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium-facade.jpg", backdropImage: "/portfolio/mycelium/hero-facade.webp", backdropPosition: "62% 45%", fields: "Architecture / Material / Ecology", caption: "Growth → maturity → decay", motion: "mycelium" },
 ] as const;
 
-function HeroMotion({ type }: { type: (typeof projectScenes)[number]["motion"] }) {
+function HeroMotion({ type }: { type: NonNullable<ProjectScene["motion"]> }) {
   if (type === "biochar") return <div className="hero-motion hero-biochar" aria-hidden="true"><i /><i /><i /><i /><i /></div>;
   if (type === "proxy") return <div className="hero-motion hero-proxy" aria-hidden="true">{Array.from({ length: 10 }, (_, i) => <i key={i} style={{ "--n": i } as CSSProperties} />)}</div>;
-  if (type === "museum") return <div className="hero-motion hero-museum" aria-hidden="true"><i /><i /><i /><i /><b>01</b><b>02</b><b>03</b><b>04</b></div>;
   return <div className="hero-motion hero-mycelium" aria-hidden="true"><i /><i /><i /><span>GROWTH</span><span>MATURE</span><span>DECAY</span></div>;
+}
+
+function ProjectMedia({ project, isActive }: { project: ProjectScene; isActive: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+    if (isActive) {
+      video.currentTime = 0;
+      void video.play().catch(() => undefined);
+    } else {
+      video.pause();
+    }
+  }, [isActive]);
+
+  return (
+    <figure className="home-project-media">
+      {project.video ? (
+        <video ref={videoRef} src={project.video} poster={project.image} muted loop playsInline preload="metadata" aria-label={`${project.title} film excerpt`} />
+      ) : (
+        <img src={project.image} alt={`${project.title} project cover`} />
+      )}
+      {project.motion ? <HeroMotion type={project.motion} /> : null}
+    </figure>
+  );
 }
 
 export default function Home() {
@@ -71,8 +112,10 @@ export default function Home() {
         </div>
 
         {projectScenes.map((project, index) => <article className={`home-project-scene ${scene === index + 1 ? "is-current" : ""}`} aria-hidden={scene !== index + 1} key={project.slug}>
+          <div className="home-project-backdrop" style={{ backgroundImage: `url("${project.backdropImage}")`, backgroundPosition: project.backdropPosition }} aria-hidden="true" />
+          <div className="home-project-glow" aria-hidden="true" />
           <a className="home-project-link" href={`/work/${project.slug}`} tabIndex={scene === index + 1 ? 0 : -1}>
-            <figure className="home-project-media"><img src={project.image} alt={`${project.title} portfolio placeholder`} /><HeroMotion type={project.motion} /></figure>
+            <ProjectMedia project={project} isActive={scene === index + 1} />
             <div className="home-project-title"><span>0{index + 1} / SELECTED WORK</span><h2>{project.title}</h2><p>{project.caption}</p></div>
           </a>
         </article>)}

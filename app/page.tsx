@@ -33,7 +33,10 @@ const projectScenes: readonly ProjectScene[] = [
     { src: "/portfolio/mycelium/home/season-summer.jpg", label: "Summer" },
     { src: "/portfolio/mycelium/home/season-autumn.jpg", label: "Autumn" },
   ], backdropImage: "/portfolio/mycelium/home/facade-context-background.jpg", backdropPosition: "50% 48%", fields: "Architecture / Material / Ecology", caption: "Growth → maturity → decay", motion: null },
+  { title: "Second World", slug: "second-world", image: "/portfolio/second-world/home/second-world-30s-poster.jpg", video: "/portfolio/second-world/home/second-world-26-34.mp4", backdropImage: "/portfolio/second-world/home/quest-portraits-background.jpg", backdropPosition: "50% 50%", fields: "Data Visualization / Computation", caption: "Intention → digital behavior → body response", motion: null },
 ] as const;
+
+const sceneCount = projectScenes.length + 1;
 
 function HeroMotion({ type }: { type: NonNullable<ProjectScene["motion"]> }) {
   if (type === "biochar") return <div className="hero-motion hero-biochar" aria-hidden="true"><i /><i /><i /><i /><i /></div>;
@@ -92,7 +95,7 @@ export default function Home() {
   const [pointer, setPointer] = useState({ x: 50, y: 50 });
 
   useEffect(() => {
-    const timer = window.setInterval(() => setScene(current => (current + 1) % 5), 7500);
+    const timer = window.setInterval(() => setScene(current => (current + 1) % sceneCount), 7500);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -142,11 +145,11 @@ export default function Home() {
           </a>
         </article>)}
 
-        {scene > 0 && currentProject ? <div className="scene-status" aria-live="polite"><span>{String(scene + 1).padStart(2, "0")} / 05</span><p>{currentProject.title}</p><small>{currentProject.fields}</small></div> : null}
+        {scene > 0 && currentProject ? <div className="scene-status" aria-live="polite"><span>{String(scene + 1).padStart(2, "0")} / {String(sceneCount).padStart(2, "0")}</span><p>{currentProject.title}</p><small>{currentProject.fields}</small></div> : null}
         <a className="enter-work" href="/work">Selected Work <span>↓</span></a>
       </section>
 
-      <div className="scene-controls" aria-label="Homepage scenes">{Array.from({ length: 5 }, (_, index) => <button key={index} type="button" className={scene === index ? "is-current" : ""} onClick={() => setScene(index)} aria-label={`Show scene ${index + 1}`}><i /></button>)}</div>
+      <div className="scene-controls" aria-label="Homepage scenes">{Array.from({ length: sceneCount }, (_, index) => <button key={index} type="button" className={scene === index ? "is-current" : ""} onClick={() => setScene(index)} aria-label={`Show scene ${index + 1}`}><i /></button>)}</div>
     </main>
   );
 }

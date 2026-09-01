@@ -10,11 +10,43 @@ const fields = [
 ] as const;
 
 const systemRoutes = [
-  { d: "M 500 380 C 410 372, 286 316, 124 315", gradient: "route-gradient-0" },
-  { d: "M 500 380 C 612 355, 708 260, 858 214", gradient: "route-gradient-1" },
-  { d: "M 500 380 C 605 420, 714 526, 842 584", gradient: "route-gradient-2" },
-  { d: "M 500 380 C 402 423, 299 526, 154 586", gradient: "route-gradient-3" },
+  { end: [124, 315], gradient: "route-gradient-0" },
+  { end: [858, 214], gradient: "route-gradient-1" },
+  { end: [842, 584], gradient: "route-gradient-2" },
+  { end: [154, 586], gradient: "route-gradient-3" },
 ] as const;
+
+function systemRouteGeometry(end: readonly [number, number]) {
+  const [endX, endY] = end;
+  const originX = 500;
+  const originY = 380;
+  const dx = endX - originX;
+  const dy = endY - originY;
+  const length = Math.hypot(dx, dy);
+  const ux = dx / length;
+  const uy = dy / length;
+  const px = -uy;
+  const py = ux;
+  const shoulderX = endX - ux * 30;
+  const shoulderY = endY - uy * 30;
+  const startHalfWidth = 2.5;
+  const bandHalfWidth = 9;
+  const arrowHalfWidth = 16;
+  const point = (x: number, y: number) => `${x.toFixed(1)} ${y.toFixed(1)}`;
+
+  return {
+    motionPath: `M ${originX} ${originY} L ${endX} ${endY}`,
+    bandPath: [
+      `M ${point(originX + px * startHalfWidth, originY + py * startHalfWidth)}`,
+      `L ${point(shoulderX + px * bandHalfWidth, shoulderY + py * bandHalfWidth)}`,
+      `L ${point(shoulderX + px * arrowHalfWidth, shoulderY + py * arrowHalfWidth)}`,
+      `L ${point(endX, endY)}`,
+      `L ${point(shoulderX - px * arrowHalfWidth, shoulderY - py * arrowHalfWidth)}`,
+      `L ${point(shoulderX - px * bandHalfWidth, shoulderY - py * bandHalfWidth)}`,
+      `L ${point(originX - px * startHalfWidth, originY - py * startHalfWidth)} Z`,
+    ].join(" "),
+  };
+}
 
 type ProjectScene = {
   title: string;
@@ -169,40 +201,50 @@ export default function Home() {
             <svg className="system-routes" viewBox="0 0 1000 760" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 {systemRoutes.map((route, index) => {
-                  const endPoints = [[124, 315], [858, 214], [842, 584], [154, 586]][index];
-                  return <linearGradient id={route.gradient} gradientUnits="userSpaceOnUse" x1="500" y1="380" x2={endPoints[0]} y2={endPoints[1]} key={route.gradient}>
-                    <stop offset="0" stopColor="#71909a" stopOpacity=".08" />
-                    <stop offset=".52" stopColor="#71909a" stopOpacity=".38" />
-                    <stop offset="1" stopColor="#86a7b2" stopOpacity=".88" />
+                  return <linearGradient id={route.gradient} gradientUnits="userSpaceOnUse" x1="500" y1="380" x2={route.end[0]} y2={route.end[1]} key={route.gradient}>
+                    <stop offset="0" stopColor="#7997a2" stopOpacity=".05" />
+                    <stop offset=".5" stopColor="#6f95a2" stopOpacity=".24" />
+                    <stop offset="1" stopColor="#7da9b7" stopOpacity=".5" />
                   </linearGradient>;
                 })}
-                <filter id="signal-glow" x="-250%" y="-250%" width="600%" height="600%">
-                  <feGaussianBlur stdDeviation="7" result="blur" />
-                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                <filter id="signal-glow" x="-400%" y="-400%" width="900%" height="900%">
+                  <feGaussianBlur stdDeviation="12" result="outerGlow" />
+                  <feGaussianBlur stdDeviation="3" result="innerGlow" />
+                  <feMerge>
+                    <feMergeNode in="outerGlow" /><feMergeNode in="outerGlow" />
+                    <feMergeNode in="innerGlow" /><feMergeNode in="innerGlow" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
-                <marker id="route-arrow" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="strokeWidth">
-                  <path d="M 1 1 L 10 6 L 1 11" fill="none" stroke="#75939d" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                </marker>
               </defs>
-              {systemRoutes.map((route, index) => (
-                <g className={`system-route ${active === index ? "is-active" : ""}`} key={route.d}>
-                  <path className="system-route-base" d={route.d} pathLength="100" />
-                  <path className="system-route-active" d={route.d} pathLength="100" stroke={`url(#${route.gradient})`} markerEnd="url(#route-arrow)" />
-                  <circle className="system-route-terminal" cx={[124, 858, 842, 154][index]} cy={[315, 214, 584, 586][index]} r="4" />
-                  <g className="system-signal-trail">
-                    {[0, 1, 2, 3, 4].map((trailIndex) => (
-                      <circle
-                        className={`system-signal system-signal-${trailIndex}`}
-                        r={[7, 4.6, 3.4, 2.5, 1.8][trailIndex]}
+              {systemRoutes.map((route, index) => {
+                const geometry = systemRouteGeometry(route.end);
+                return <g className={`system-route ${active === index ? "is-active" : ""}`} key={route.gradient}>
+                  <path className="system-route-band-base" d={geometry.bandPath} />
+                  <path className="system-route-band-glow" d={geometry.bandPath} fill={`url(#${route.gradient})`} />
+                  <path className="system-route-band" d={geometry.bandPath} fill={`url(#${route.gradient})`} />
+                  <circle className="system-route-terminal-core" cx={route.end[0]} cy={route.end[1]} r="4.5" />
+                  {[0, 1, 2].map(waveIndex => <circle className="system-route-wave" cx={route.end[0]} cy={route.end[1]} r="4" style={{ "--wave": waveIndex } as CSSProperties} key={waveIndex} />)}
+                  {active === index ? <g className="system-signal-trail">
+                    {Array.from({ length: 15 }, (_, trailIndex) => {
+                      const start = .04 + trailIndex * .015;
+                      const end = .72 + trailIndex * .012;
+                      const radius = trailIndex === 0 ? 9 : Math.max(1.35, 5.5 - trailIndex * .3);
+                      const opacity = trailIndex === 0 ? 1 : Math.max(.055, .58 * Math.pow(1 - trailIndex / 15, 1.45));
+                      return <circle
+                        className={`system-signal ${trailIndex === 0 ? "system-signal-leader" : "system-signal-particle"} ${trailIndex >= 9 ? "is-desktop-tail" : ""}`}
+                        r={radius}
                         filter={trailIndex === 0 ? "url(#signal-glow)" : undefined}
+                        style={{ "--particle-opacity": opacity } as CSSProperties}
                         key={trailIndex}
                       >
-                        <animateMotion dur="3s" begin={`${trailIndex * -.085}s`} repeatCount="indefinite" path={route.d} keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".35 0 .22 1" />
-                      </circle>
-                    ))}
-                  </g>
-                </g>
-              ))}
+                        <animateMotion dur="3.4s" repeatCount="indefinite" path={geometry.motionPath} keyPoints="0;0;1;1" keyTimes={`0;${start};${end};1`} calcMode="linear" />
+                        <animate attributeName="opacity" dur="3.4s" repeatCount="indefinite" values={`0;0;${opacity};${opacity};0;0`} keyTimes={`0;${start};${Math.min(start + .025, end)};${Math.max(start + .025, end - .025)};${end};1`} />
+                      </circle>;
+                    })}
+                  </g> : null}
+                </g>;
+              })}
             </svg>
             <div className="field-core"><span>CONDITION</span><i /></div>
             {fields.map((field, index) => <div className={`field-path path-${index} ${active === index ? "is-active" : ""}`} key={field.name}>

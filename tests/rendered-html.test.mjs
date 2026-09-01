@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(path = "/") {
@@ -49,6 +50,25 @@ test("server-renders the one-screen research landscape entrance", async () => {
   ]) assert.match(html, new RegExp(backdrop.replaceAll("/", "\\/")));
   assert.doesNotMatch(html, /\/portfolio\/museum-process\.jpg/);
   assert.doesNotMatch(html, /id="work"/);
+});
+
+test("keeps homepage layout and motion assets compatible with cold-cache browsers", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /\.home-shell\{[^}]*height:100vh;height:100svh/);
+  assert.match(css, /\.home-stage\{[^}]*height:100vh;height:100svh/);
+  assert.match(css, /\.home-project-media\{[^}]*height:min\(46\.05vw,63\.8vh,703px\)/);
+
+  for (const relativePath of [
+    "../public/portfolio/biochar/home/biochar-website-use.mp4",
+    "../public/portfolio/museum/home-introduction-07-16.mp4",
+    "../public/portfolio/mycelium/home/mycelium-website-use.mp4",
+    "../public/portfolio/second-world/home/second-world-22-42-2_5x.mp4",
+  ]) {
+    const movie = await readFile(new URL(relativePath, import.meta.url));
+    const moov = movie.indexOf(Buffer.from("moov"));
+    const mdat = movie.indexOf(Buffer.from("mdat"));
+    assert.ok(moov > -1 && mdat > -1 && moov < mdat, `${relativePath} must be fast-start encoded`);
+  }
 });
 
 test("serves the work index, about page, and all ten project routes", async () => {

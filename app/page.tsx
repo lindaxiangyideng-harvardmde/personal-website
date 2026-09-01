@@ -39,22 +39,47 @@ function HeroMotion({ type }: { type: NonNullable<ProjectScene["motion"]> }) {
   return <div className="hero-motion hero-mycelium" aria-hidden="true"><i /><i /><i /><span>GROWTH</span><span>MATURE</span><span>DECAY</span></div>;
 }
 
-function ProjectMedia({ project, isActive }: { project: ProjectScene; isActive: boolean }) {
+function ProjectMedia({ project, isActive, shouldPreload }: { project: ProjectScene; isActive: boolean; shouldPreload: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
       video.pause();
       return;
     }
-    if (isActive) {
-      video.currentTime = 0;
-      void video.play().catch(() => undefined);
-    } else {
+    if (!isActive) {
       video.pause();
+      return;
     }
+
+    let disposed = false;
+    video.currentTime = 0;
+
+    const attemptPlayback = () => {
+      if (disposed || document.hidden || !isActive) return;
+      void video.play().catch(() => {
+        // The poster remains visible. A later pointer or keyboard gesture retries playback.
+      });
+    };
+    const handleVisibility = () => document.hidden ? video.pause() : attemptPlayback();
+
+    if (video.readyState === 0) video.load();
+    if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) attemptPlayback();
+    video.addEventListener("canplay", attemptPlayback);
+    document.addEventListener("visibilitychange", handleVisibility);
+    window.addEventListener("pointerdown", attemptPlayback, { passive: true });
+    window.addEventListener("keydown", attemptPlayback);
+
+    return () => {
+      disposed = true;
+      video.removeEventListener("canplay", attemptPlayback);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      window.removeEventListener("pointerdown", attemptPlayback);
+      window.removeEventListener("keydown", attemptPlayback);
+    };
   }, [isActive]);
 
   return (
@@ -75,7 +100,9 @@ function ProjectMedia({ project, isActive }: { project: ProjectScene; isActive: 
           <div className="watershed-state" aria-hidden="true"><span>SPONTANEOUS / NATURAL FLOW</span><span>UNSPONTANEOUS / URBAN CAPTURE</span></div>
         </div>
       ) : project.video ? (
-        <video ref={videoRef} src={project.video} poster={project.image} muted loop playsInline preload="metadata" aria-label={`${project.title} film excerpt`} />
+        <video ref={videoRef} poster={project.image} autoPlay={isActive} muted loop playsInline preload={shouldPreload ? "auto" : "metadata"} aria-label={`${project.title} film excerpt`}>
+          <source src={project.video} type="video/mp4" />
+        </video>
       ) : (
         <img src={project.image} alt={`${project.title} project cover`} />
       )}
@@ -90,9 +117,19 @@ export default function Home() {
   const [pointer, setPointer] = useState({ x: 50, y: 50 });
 
   useEffect(() => {
-    const timer = window.setInterval(() => setScene(current => (current + 1) % sceneCount), 7500);
-    return () => window.clearInterval(timer);
-  }, []);
+    let timer = 0;
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (!document.hidden) timer = window.setTimeout(() => setScene(current => (current + 1) % sceneCount), 7500);
+    };
+    const handleVisibility = () => schedule();
+    schedule();
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [scene]);
 
   function traceSystem(event: PointerEvent<HTMLElement>) {
     if (scene !== 0) return;
@@ -109,6 +146,7 @@ export default function Home() {
     <main
       className="home-shell"
       onPointerMove={traceSystem}
+      onPointerDown={traceSystem}
       style={{ "--mx": `${pointer.x}%`, "--my": `${pointer.y}%` } as CSSProperties}
     >
       <header className="home-header">
@@ -135,7 +173,7 @@ export default function Home() {
           <div className="home-project-backdrop" style={{ backgroundImage: `url("${project.backdropImage}")`, backgroundPosition: project.backdropPosition }} aria-hidden="true" />
           <div className="home-project-glow" aria-hidden="true" />
           <a className="home-project-link" href={`/work/${project.slug}`} tabIndex={scene === index + 1 ? 0 : -1}>
-            <ProjectMedia project={project} isActive={scene === index + 1} />
+            <ProjectMedia project={project} isActive={scene === index + 1} shouldPreload={scene === index || scene === index + 1} />
             <div className="home-project-title"><span>0{index + 1} / SELECTED WORK</span><h2>{project.title}</h2><p>{project.caption}</p></div>
           </a>
         </article>)}

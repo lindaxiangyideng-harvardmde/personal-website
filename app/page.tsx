@@ -33,7 +33,7 @@ const projectScenes: readonly ProjectScene[] = [
     { src: "/portfolio/mycelium/home/season-summer.jpg", label: "Summer" },
     { src: "/portfolio/mycelium/home/season-autumn.jpg", label: "Autumn" },
   ], backdropImage: "/portfolio/mycelium/home/facade-context-background.jpg", backdropPosition: "50% 48%", fields: "Architecture / Material / Ecology", caption: "Growth → maturity → decay", motion: null },
-  { title: "Second World", slug: "second-world", image: "/portfolio/second-world/home/second-world-30s-poster.jpg", video: "/portfolio/second-world/home/second-world-26-34.mp4", backdropImage: "/portfolio/second-world/home/quest-portraits-background.jpg", backdropPosition: "50% 50%", fields: "Data Visualization / Computation", caption: "Intention → digital behavior → body response", motion: null },
+  { title: "Second World", slug: "second-world", image: "/portfolio/second-world/home/second-world-32s-poster.jpg", video: "/portfolio/second-world/home/second-world-22-42-2_5x.mp4", backdropImage: "/portfolio/second-world/home/quest-portraits-background.jpg", backdropPosition: "50% 50%", fields: "Data Visualization / Computation", caption: "Intention → digital behavior → body response", motion: null },
 ] as const;
 
 const sceneCount = projectScenes.length + 1;

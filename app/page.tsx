@@ -131,6 +131,9 @@ function ProjectMedia({ project, isActive, shouldPreload }: { project: ProjectSc
         <div className="watershed-transition" aria-label="Spontaneous watershed transforming into the unspontaneous urban watershed">
           <img className="watershed-map watershed-map-from" src={project.transitionFrames.from} alt="Spontaneous watershed across Jamaica Bay" />
           <img className="watershed-map watershed-map-to" src={project.transitionFrames.to} alt="Unspontaneous watershed shaped by urban infrastructure" />
+          <div className="watershed-stream" aria-hidden="true">
+            {Array.from({ length: 9 }, (_, index) => <i key={index} style={{ "--n": index } as CSSProperties} />)}
+          </div>
           <div className="watershed-flow" aria-hidden="true">
             {[
               [18, 35], [31, 57], [46, 31], [57, 62], [70, 42], [82, 66], [64, 22],

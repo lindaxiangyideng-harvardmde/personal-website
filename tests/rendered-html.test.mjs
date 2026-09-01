@@ -34,8 +34,7 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /\/portfolio\/museum\/home-introduction-07-16\.mp4/);
   assert.match(html, /\/portfolio\/museum\/film-poster\.webp/);
   assert.match(html, /\/portfolio\/museum\/home-user-example-background\.jpg/);
-  assert.match(html, /class="mycelium-season-sequence"/);
-  for (const season of ["winter", "spring", "summer", "autumn"]) assert.match(html, new RegExp(`/portfolio/mycelium/home/season-${season}\\.jpg`));
+  assert.match(html, /\/portfolio\/mycelium\/home\/mycelium-website-use\.mp4/);
   assert.match(html, /\/portfolio\/mycelium\/home\/facade-context-background\.jpg/);
   assert.match(html, /\/portfolio\/second-world\/home\/second-world-22-42-2_5x\.mp4/);
   assert.match(html, /\/portfolio\/second-world\/home\/second-world-32s-poster\.jpg/);

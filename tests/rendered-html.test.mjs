@@ -23,6 +23,9 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /spatial propositions/);
   assert.match(html, /href="\/work"/);
   assert.match(html, /class="home-project-backdrop"/);
+  assert.match(html, /\/portfolio\/biochar\/home\/biochar-building-cycle\.mp4/);
+  assert.match(html, /\/portfolio\/biochar\/home\/building-cycle-poster\.jpg/);
+  assert.match(html, /\/portfolio\/biochar\/home\/material-background\.jpg/);
   assert.match(html, /portfolio\/proxy\/home\/nyc-watershed-background\.jpg/);
   assert.match(html, /class="home-project-glow"/);
   assert.match(html, /class="watershed-transition"/);
@@ -41,7 +44,7 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /Second World/);
   assert.match(html, /Show scene 6/);
   for (const backdrop of [
-    "/portfolio/biochar/community-system.jpg",
+    "/portfolio/biochar/home/material-background.jpg",
     "/portfolio/proxy/home/nyc-watershed-background.jpg",
     "/portfolio/mycelium/home/facade-context-background.jpg",
   ]) assert.match(html, new RegExp(backdrop.replaceAll("/", "\\/")));

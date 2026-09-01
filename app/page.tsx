@@ -24,7 +24,7 @@ type ProjectScene = {
 };
 
 const projectScenes: readonly ProjectScene[] = [
-  { title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar-architecture.jpg", backdropImage: "/portfolio/biochar/community-system.jpg", backdropPosition: "46% 48%", fields: "Architecture / Material / Ecology", caption: "Waste → carbon → building repair", motion: "biochar" },
+  { title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar/home/building-cycle-poster.jpg", video: "/portfolio/biochar/home/biochar-building-cycle.mp4", backdropImage: "/portfolio/biochar/home/material-background.jpg", backdropPosition: "54% 50%", fields: "Architecture / Material / Ecology", caption: "Waste → carbon → building repair", motion: null },
   { title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy/home/spontaneous.jpg", transitionFrames: { from: "/portfolio/proxy/home/spontaneous.jpg", to: "/portfolio/proxy/home/unspontaneous.jpg" }, backdropImage: "/portfolio/proxy/home/nyc-watershed-background.jpg", backdropPosition: "50% 54%", fields: "Architecture / Computation / Ecology", caption: "Water → evidence → coastal repair", motion: null },
   { title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", video: "/portfolio/museum/home-introduction-07-16.mp4", backdropImage: "/portfolio/museum/home-user-example-background.jpg", backdropPosition: "50% 48%", fields: "Architecture / Computation", caption: "Plan → routes → spatial choice", motion: null },
   { title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium/home/season-winter.jpg", seasonalFrames: [

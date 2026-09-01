@@ -9,6 +9,13 @@ const fields = [
   { name: "Ecology", note: "living relation" },
 ] as const;
 
+const systemRoutes = [
+  { d: "M 500 380 C 410 372, 286 316, 124 315", gradient: "route-gradient-0" },
+  { d: "M 500 380 C 612 355, 708 260, 858 214", gradient: "route-gradient-1" },
+  { d: "M 500 380 C 605 420, 714 526, 842 584", gradient: "route-gradient-2" },
+  { d: "M 500 380 C 402 423, 299 526, 154 586", gradient: "route-gradient-3" },
+] as const;
+
 type ProjectScene = {
   title: string;
   slug: string;
@@ -159,9 +166,46 @@ export default function Home() {
         <div className={`system-scene ${scene === 0 ? "is-current" : ""}`} aria-hidden={scene !== 0}>
           <div className="field-orbit">
             <div className="field-haze" /><div className="field-disc field-disc-one" /><div className="field-disc field-disc-two" />
+            <svg className="system-routes" viewBox="0 0 1000 760" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                {systemRoutes.map((route, index) => {
+                  const endPoints = [[124, 315], [858, 214], [842, 584], [154, 586]][index];
+                  return <linearGradient id={route.gradient} gradientUnits="userSpaceOnUse" x1="500" y1="380" x2={endPoints[0]} y2={endPoints[1]} key={route.gradient}>
+                    <stop offset="0" stopColor="#71909a" stopOpacity=".08" />
+                    <stop offset=".52" stopColor="#71909a" stopOpacity=".38" />
+                    <stop offset="1" stopColor="#86a7b2" stopOpacity=".88" />
+                  </linearGradient>;
+                })}
+                <filter id="signal-glow" x="-250%" y="-250%" width="600%" height="600%">
+                  <feGaussianBlur stdDeviation="7" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <marker id="route-arrow" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="strokeWidth">
+                  <path d="M 1 1 L 10 6 L 1 11" fill="none" stroke="#75939d" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+                </marker>
+              </defs>
+              {systemRoutes.map((route, index) => (
+                <g className={`system-route ${active === index ? "is-active" : ""}`} key={route.d}>
+                  <path className="system-route-base" d={route.d} pathLength="100" />
+                  <path className="system-route-active" d={route.d} pathLength="100" stroke={`url(#${route.gradient})`} markerEnd="url(#route-arrow)" />
+                  <circle className="system-route-terminal" cx={[124, 858, 842, 154][index]} cy={[315, 214, 584, 586][index]} r="4" />
+                  <g className="system-signal-trail">
+                    {[0, 1, 2, 3, 4].map((trailIndex) => (
+                      <circle
+                        className={`system-signal system-signal-${trailIndex}`}
+                        r={[7, 4.6, 3.4, 2.5, 1.8][trailIndex]}
+                        filter={trailIndex === 0 ? "url(#signal-glow)" : undefined}
+                        key={trailIndex}
+                      >
+                        <animateMotion dur="3s" begin={`${trailIndex * -.085}s`} repeatCount="indefinite" path={route.d} keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".35 0 .22 1" />
+                      </circle>
+                    ))}
+                  </g>
+                </g>
+              ))}
+            </svg>
             <div className="field-core"><span>CONDITION</span><i /></div>
             {fields.map((field, index) => <div className={`field-path path-${index} ${active === index ? "is-active" : ""}`} key={field.name}>
-              <i className="path-line" /><i className="path-pulse" />
               <button type="button" tabIndex={scene === 0 ? 0 : -1} onPointerEnter={() => setActive(index)} onFocus={() => setActive(index)} aria-label={`Trace the system toward ${field.name}`}><span>0{index + 1}</span><b>{field.name}</b></button>
             </div>)}
           </div>

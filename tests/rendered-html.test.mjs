@@ -23,7 +23,7 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /spatial propositions/);
   assert.match(html, /href="\/work"/);
   assert.match(html, /class="home-project-backdrop"/);
-  assert.match(html, /\/portfolio\/biochar\/home\/biochar-building-cycle\.mp4/);
+  assert.match(html, /\/portfolio\/biochar\/home\/biochar-website-use\.mp4/);
   assert.match(html, /\/portfolio\/biochar\/home\/building-cycle-poster\.jpg/);
   assert.match(html, /\/portfolio\/biochar\/home\/material-background\.jpg/);
   assert.match(html, /portfolio\/proxy\/home\/nyc-watershed-background\.jpg/);

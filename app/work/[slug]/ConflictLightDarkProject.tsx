@@ -8,7 +8,7 @@ export default function ConflictLightDarkProject(){return <main className="confl
   <header className="conflict-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
   <section className="conflict-title">
-    <div className="conflict-kicker"><span>05 / 2023</span><span>Architecture / Material</span></div>
+    <div className="conflict-kicker"><span>06 / 2023</span><span>Architecture / Material</span></div>
     <div className="conflict-title-copy"><h1>Conflict in<br/><i>Light &amp; Dark</i></h1><p>An Underground Museum film institution shaped through contrasts between concrete and glass, mass and incision, darkness and projected light.</p></div>
     <dl className="conflict-facts"><div><dt>Type</dt><dd>Individual architecture studio</dd></div><div><dt>Site</dt><dd>Leimert Park, Los Angeles</dd></div><div><dt>Studio</dt><dd>Columbia GSAPP · Yo-Ichiro Hakomori</dd></div></dl>
   </section>

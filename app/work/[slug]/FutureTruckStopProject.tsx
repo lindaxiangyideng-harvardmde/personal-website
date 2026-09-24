@@ -12,7 +12,7 @@ export default function FutureTruckStopProject(){return <main className="truck-p
   <header className="truck-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
   <section className="truck-title">
-    <div className="truck-kicker"><span>07 / 2023</span><span>Architecture / Energy / Ecology</span></div>
+    <div className="truck-kicker"><span>08 / 2023</span><span>Architecture / Energy / Ecology</span></div>
     <div className="truck-title-copy"><h1>Intertwined Energy<br/><i>&amp; Human Activities</i></h1><p>A future truck stop that turns longer electric-charging stays into a landscape for energy capture, environmental conditioning, and human occupation.</p></div>
     <dl className="truck-facts"><div><dt>Type</dt><dd>Individual architecture studio</dd></div><div><dt>Site</dt><dd>Long-haul transportation landscape</dd></div><div><dt>Studio</dt><dd>Columbia GSAPP · Michael Bell</dd></div></dl>
   </section>

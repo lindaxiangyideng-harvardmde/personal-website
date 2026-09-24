@@ -59,10 +59,11 @@ type ProjectScene = {
   backdropPosition: string;
   fields: string;
   caption: string;
-  motion: "biochar" | "proxy" | "mycelium" | null;
+  motion: "alan" | "biochar" | "proxy" | "mycelium" | null;
 };
 
 const projectScenes: readonly ProjectScene[] = [
+  { title: "ALAN", slug: "alan", image: "/portfolio/alan/cover.svg", backdropImage: "/portfolio/alan/cover.svg", backdropPosition: "50% 50%", fields: "Environmental Data / Computation / Ecology", caption: "Spectrum → receptor contribution → perceptual space", motion: "alan" },
   { title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar/home/building-cycle-poster.jpg", video: "/portfolio/biochar/home/biochar-website-use.mp4", backdropImage: "/portfolio/biochar/home/material-background.jpg", backdropPosition: "54% 50%", fields: "Architecture / Material / Ecology", caption: "Waste → carbon → building repair", motion: null },
   { title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy/home/spontaneous.jpg", transitionFrames: { from: "/portfolio/proxy/home/spontaneous.jpg", to: "/portfolio/proxy/home/unspontaneous.jpg" }, backdropImage: "/portfolio/proxy/home/nyc-watershed-background.jpg", backdropPosition: "50% 54%", fields: "Architecture / Computation / Ecology", caption: "Water → evidence → coastal repair", motion: null },
   { title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", video: "/portfolio/museum/home-introduction-07-16.mp4", backdropImage: "/portfolio/museum/home-user-example-background.jpg", backdropPosition: "50% 48%", fields: "Architecture / Computation", caption: "Plan → routes → spatial choice", motion: null },
@@ -73,6 +74,7 @@ const projectScenes: readonly ProjectScene[] = [
 const sceneCount = projectScenes.length + 1;
 
 function HeroMotion({ type }: { type: NonNullable<ProjectScene["motion"]> }) {
+  if (type === "alan") return <div className="hero-motion hero-alan" aria-hidden="true">{Array.from({ length: 18 }, (_, i) => <i key={i} style={{ "--n": i } as CSSProperties} />)}<span>PHYSICAL</span><span>CONTRIBUTION</span><span>INTERPRETIVE</span></div>;
   if (type === "biochar") return <div className="hero-motion hero-biochar" aria-hidden="true"><i /><i /><i /><i /><i /></div>;
   if (type === "proxy") return <div className="hero-motion hero-proxy" aria-hidden="true">{Array.from({ length: 10 }, (_, i) => <i key={i} style={{ "--n": i } as CSSProperties} />)}</div>;
   return <div className="hero-motion hero-mycelium" aria-hidden="true"><i /><i /><i /><span>GROWTH</span><span>MATURE</span><span>DECAY</span></div>;

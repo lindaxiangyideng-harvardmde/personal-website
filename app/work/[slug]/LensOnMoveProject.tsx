@@ -8,7 +8,7 @@ export default function LensOnMoveProject(){return <main className="lens-page">
   <header className="lens-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
   <section className="lens-title">
-    <div className="lens-kicker"><span>06 / 2024</span><span>Architecture / Adaptable Dwelling</span></div>
+    <div className="lens-kicker"><span>07 / 2024</span><span>Architecture / Adaptable Dwelling</span></div>
     <div className="lens-title-copy"><h1>Lens on<br/><i>the Move</i></h1><p>A transformable microhome for two nomadic photographers, designed to compress for travel and unfold in response to city, landscape, and community.</p></div>
     <dl className="lens-facts"><div><dt>Type</dt><dd>Microhome competition</dd></div><div><dt>Users</dt><dd>Nomadic photographer couple</dd></div><div><dt>Modes</dt><dd>Road · Urban · Rural · Campus</dd></div></dl>
   </section>

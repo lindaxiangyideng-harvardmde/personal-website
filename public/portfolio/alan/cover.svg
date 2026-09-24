@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">ALAN spectral space</title>
+  <desc id="desc">A dark scientific field showing wavelength, irradiance and time as a layered spectral point cloud.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#030508"/><stop offset="1" stop-color="#0b111a"/></linearGradient>
+    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#7d3db5"/><stop offset=".2" stop-color="#3d62df"/><stop offset=".38" stop-color="#00a8d4"/><stop offset=".53" stop-color="#55cf79"/><stop offset=".68" stop-color="#e2d13b"/><stop offset=".84" stop-color="#ed6140"/><stop offset="1" stop-color="#75c5d0"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g stroke="#293544" stroke-width="2" opacity=".72">
+    <path d="M235 760H1390M235 760V190M235 760L430 865"/>
+    <path d="M235 620H1390M235 480H1390M235 340H1390M520 760V190M805 760V190M1090 760V190M1375 760V190" opacity=".55"/>
+    <path d="M300 795H1450M365 830H1510" opacity=".34"/>
+  </g>
+  <g fill="none" stroke="url(#spectrum)" filter="url(#glow)">
+    <path d="M285 718C380 690 432 596 505 642S644 718 716 525 866 292 948 510 1082 688 1174 470 1292 368 1385 552" stroke-width="9" opacity=".92"/>
+    <path d="M330 768C438 742 486 662 560 688S696 755 772 585 912 388 1002 565 1132 724 1212 552 1320 468 1435 624" stroke-width="5" opacity=".5"/>
+    <path d="M260 668C356 634 408 548 480 586S618 656 690 478 840 250 928 438 1062 626 1144 422 1260 315 1360 510" stroke-width="4" opacity=".34"/>
+  </g>
+  <g fill="#dce5ef">
+    <circle cx="505" cy="642" r="7"/><circle cx="716" cy="525" r="7"/><circle cx="948" cy="510" r="7"/><circle cx="1174" cy="470" r="7"/><circle cx="1385" cy="552" r="7"/>
+  </g>
+  <g fill="#8290a2" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="22" letter-spacing="3">
+    <text x="235" y="120">ALAN / ARTIFICIAL LIGHT AT NIGHT</text>
+    <text x="235" y="920">WAVELENGTH · IRRADIANCE · TIME</text>
+    <text x="1390" y="920" text-anchor="end">PHILADELPHIA</text>
+  </g>
+  <rect x="235" y="875" width="1155" height="8" fill="url(#spectrum)" opacity=".88"/>
+</svg>

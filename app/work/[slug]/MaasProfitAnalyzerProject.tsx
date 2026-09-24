@@ -17,7 +17,7 @@ export default function MaasProfitAnalyzerProject(){return <main className="maas
   <header className="maas-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
   <section className="maas-title">
-    <div className="maas-kicker"><span>09 / 2026</span><span>Data Product / Financial Analytics</span></div>
+    <div className="maas-kicker"><span>10 / 2026</span><span>Data Product / Financial Analytics</span></div>
     <div className="maas-title-copy"><h1>MaaS Ecosystem<br/><i>Profit Analyzer</i></h1><p>An auditable analytics product that transforms monthly AI inference billing workbooks into supplier-level profit and margin insights.</p></div>
     <dl className="maas-facts"><div><dt>Role</dt><dd>Product design · data logic · full-stack development</dd></div><div><dt>Stack</dt><dd>Flask · SQLite · Jinja · JavaScript · Chart.js</dd></div><div><dt>Context</dt><dd>CS50 final project · completed local prototype</dd></div></dl>
   </section>

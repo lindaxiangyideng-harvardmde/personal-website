@@ -8,7 +8,7 @@ export default function HopeInGapProject(){return <main className="gap-page">
   <header className="gap-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
   <section className="gap-title">
-    <div className="gap-kicker"><span>08 / 2020</span><span>Architecture / Housing</span></div>
+    <div className="gap-kicker"><span>09 / 2020</span><span>Architecture / Housing</span></div>
     <div className="gap-title-copy"><h1>Hope<br/><i>in Gap</i></h1><p>A supportive-housing prototype that places prefabricated homes within overlooked urban gaps and uses layered porosity to protect light, air, views, and shared life.</p></div>
     <dl className="gap-facts"><div><dt>Type</dt><dd>Individual architecture studio</dd></div><div><dt>Site</dt><dd>Lincoln Heights, Los Angeles</dd></div><div><dt>Studio</dt><dd>USC · Gary Paige</dd></div></dl>
   </section>

@@ -24,6 +24,8 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /spatial propositions/);
   assert.match(html, /href="\/work"/);
   assert.match(html, /class="home-project-backdrop"/);
+  assert.match(html, /data-project="alan"/);
+  assert.match(html, /\/portfolio\/alan\/cover\.svg/);
   assert.match(html, /\/portfolio\/biochar\/home\/biochar-website-use\.mp4/);
   assert.match(html, /\/portfolio\/biochar\/home\/building-cycle-poster\.jpg/);
   assert.match(html, /\/portfolio\/biochar\/home\/material-background\.jpg/);
@@ -42,7 +44,7 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /\/portfolio\/second-world\/home\/quest-portraits-background\.jpg/);
   assert.match(html, /data-project="second-world"/);
   assert.match(html, /Second World/);
-  assert.match(html, /Show scene 6/);
+  assert.match(html, /Show scene 7/);
   for (const backdrop of [
     "/portfolio/biochar/home/material-background.jpg",
     "/portfolio/proxy/home/nyc-watershed-background.jpg",
@@ -71,10 +73,11 @@ test("keeps homepage layout and motion assets compatible with cold-cache browser
   }
 });
 
-test("serves the work index, about page, and all ten project routes", async () => {
+test("serves the work index, about page, and all eleven project routes", async () => {
   const routes = [
     ["/work", /Selected[\s\S]*research systems/],
     ["/about", /Designing relationships/],
+    ["/work/alan", /Artificial Light At Night/],
     ["/work/biochar-metabolism", /Biochar Metabolism/],
     ["/work/proxy-landscape", /The Proxy Landscape/],
     ["/work/museum-reorganization", /Museum Reorganization/],
@@ -98,6 +101,7 @@ test("renders the curated Selected Work cover system", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   for (const asset of [
+    "/portfolio/alan/cover.svg",
     "/portfolio/biochar/community-system.jpg",
     "/portfolio/proxy/hero-map-spontaneous-clear.webp",
     "/portfolio/museum/film-poster.webp",
@@ -110,6 +114,20 @@ test("renders the curated Selected Work cover system", async () => {
     "/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png",
   ]) assert.match(html, new RegExp(asset.replaceAll("/", "\\/")));
   assert.doesNotMatch(html, /Final images will replace these portfolio spreads/);
+  assert.ok(html.indexOf("/work/alan") < html.indexOf("/work/biochar-metabolism"));
+});
+
+test("renders ALAN as the first project with its curated interactive spectrum", async () => {
+  const response = await render("/work/alan");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="alan-page"/);
+  assert.match(html, /01 \/ 2026/);
+  assert.match(html, /Physical/);
+  assert.match(html, /Contribution/);
+  assert.match(html, /Interpretive/);
+  assert.match(html, /Carolina sphinx/);
+  assert.match(html, /\/portfolio\/alan\/interactive\//);
 });
 
 test("renders Biochar as a complete research narrative", async () => {

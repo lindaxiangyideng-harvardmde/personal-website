@@ -8,7 +8,7 @@ export default function MuseumReorganizationProject(){return <main className="mu
   <header className="museum-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
   <section className="museum-title">
-    <div className="museum-kicker"><span>03 / 2023</span><span>Architecture / Computation</span></div>
+    <div className="museum-kicker"><span>04 / 2023</span><span>Architecture / Computation</span></div>
     <div className="museum-title-copy"><h1>Museum<br/><i>Reorganization</i></h1><p>A continuous computational workflow that generates exhibition layouts, finds efficient routes, and measures visual qualities while preserving the museum’s freedom of exploration.</p></div>
     <dl className="museum-facts"><div><dt>Type</dt><dd>Collaborative computational design research</dd></div><div><dt>Site</dt><dd>21st Century Museum of Contemporary Art, Kanazawa</dd></div><div><dt>Focus</dt><dd>Generative layout · route finding · spatial analysis</dd></div></dl>
   </section>

@@ -12,7 +12,7 @@ export default function BiocharProject() {
     <header className="biochar-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
     <section className="biochar-title">
-      <div className="biochar-kicker"><span>01 / 2022</span><span>Architecture / Material / Ecology</span></div>
+      <div className="biochar-kicker"><span>02 / 2022</span><span>Architecture / Material / Ecology</span></div>
       <div className="biochar-title-copy">
         <h1>Biochar<br/><i>Metabolism</i></h1>
         <p>A closed-loop infrastructure that converts municipal biomass waste into carbon-storing building products, allowing an existing building to participate in its own repair.</p>

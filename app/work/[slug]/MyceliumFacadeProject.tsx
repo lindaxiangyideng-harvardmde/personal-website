@@ -32,7 +32,7 @@ export default function MyceliumFacadeProject(){return <main className="mycelium
   <header className="mycelium-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
 
   <section className="mycelium-title">
-    <div className="mycelium-kicker"><span>04 / 2025</span><span>Architecture / Material / Ecology</span></div>
+    <div className="mycelium-kicker"><span>05 / 2025</span><span>Architecture / Material / Ecology</span></div>
     <div className="mycelium-title-copy"><h1>Mycelium<br/><i>Living Facade</i></h1><p>A time-based façade system in which agricultural waste, woven structure, fungal growth, seasonal decay, and on-site collection form one visible material cycle.</p></div>
     <dl className="mycelium-facts"><div><dt>Type</dt><dd>Collaborative material research and façade proposal</dd></div><div><dt>Site</dt><dd>Los Angeles parking structure</dd></div><div><dt>Focus</dt><dd>Living materials · seasonal change · regenerative assembly</dd></div></dl>
   </section>

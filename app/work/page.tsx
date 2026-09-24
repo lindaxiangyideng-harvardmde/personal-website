@@ -1,9 +1,11 @@
+import ViewportVideo from "../ViewportVideo";
+
 const work = [
-  { number: "01", title: "ALAN", slug: "alan", image: "/portfolio/alan/cover.svg", tags: "Environmental Data / Computation / Ecology", question: "Spectrum → receptor contribution → perceptual space", motion: "alan" },
-  { number: "02", title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar/community-system.jpg", tags: "Architecture / Material / Ecology", question: "Waste → carbon → building repair", motion: "biochar" },
-  { number: "03", title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy/hero-map-spontaneous-clear.webp", tags: "Architecture / Computation / Ecology", question: "Water → evidence → coastal repair", motion: "proxy" },
-  { number: "04", title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", tags: "Architecture / Computation", question: "Plan → routes → spatial choice", motion: "museum" },
-  { number: "05", title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium/hero-facade.webp", tags: "Architecture / Material / Ecology", question: "Growth → maturity → decay", motion: "mycelium" },
+  { number: "01", title: "ALAN", slug: "alan", image: "/portfolio/alan/alan-carolina-sphinx-card.webp", video: "/portfolio/alan/alan-carolina-sphinx-card.mp4", tags: "Environmental Data / Computation / Ecology", question: "Spectrum → receptor contribution → perceptual space", motion: "alan" },
+  { number: "02", title: "Biochar Metabolism", slug: "biochar-metabolism", image: "/portfolio/biochar/community-system.jpg", video: null, tags: "Architecture / Material / Ecology", question: "Waste → carbon → building repair", motion: "biochar" },
+  { number: "03", title: "The Proxy Landscape", slug: "proxy-landscape", image: "/portfolio/proxy/hero-map-spontaneous-clear.webp", video: null, tags: "Architecture / Computation / Ecology", question: "Water → evidence → coastal repair", motion: "proxy" },
+  { number: "04", title: "Museum Reorganization", slug: "museum-reorganization", image: "/portfolio/museum/film-poster.webp", video: null, tags: "Architecture / Computation", question: "Plan → routes → spatial choice", motion: "museum" },
+  { number: "05", title: "Mycelium Living Facade", slug: "mycelium-living-facade", image: "/portfolio/mycelium/hero-facade.webp", video: null, tags: "Architecture / Material / Ecology", question: "Growth → maturity → decay", motion: "mycelium" },
 ] as const;
 
 const additionalWork = [
@@ -40,9 +42,13 @@ export default function WorkIndex() {
     <section className="project-index" aria-label="Selected projects">
       {work.map(project => <a href={`/work/${project.slug}`} className={`index-project preview-${project.motion} project-${project.number}`} key={project.slug}>
         <figure>
-          <img src={project.image} alt={`${project.title} portfolio preview`} />
-          <MotionPreview type={project.motion} />
-          <figcaption>Hover / focus to trace the system</figcaption>
+          {project.video ? (
+            <ViewportVideo src={project.video} poster={project.image} label={`${project.title}: Carolina sphinx contribution transforming into interpretive space`} />
+          ) : (
+            <img src={project.image} alt={`${project.title} portfolio preview`} />
+          )}
+          {!project.video ? <MotionPreview type={project.motion} /> : null}
+          <figcaption>{project.video ? "Contribution → Interpretive · Carolina sphinx" : "Hover / focus to trace the system"}</figcaption>
         </figure>
         <div className="index-project-copy">
           <span>{project.number}</span>

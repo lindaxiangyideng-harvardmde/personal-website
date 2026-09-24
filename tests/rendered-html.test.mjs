@@ -25,7 +25,8 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /href="\/work"/);
   assert.match(html, /class="home-project-backdrop"/);
   assert.match(html, /data-project="alan"/);
-  assert.match(html, /\/portfolio\/alan\/cover\.svg/);
+  assert.match(html, /\/portfolio\/alan\/alan-carolina-sphinx-wide\.webp/);
+  assert.match(html, /\/portfolio\/alan\/alan-carolina-sphinx-wide\.mp4/);
   assert.match(html, /\/portfolio\/biochar\/home\/biochar-website-use\.mp4/);
   assert.match(html, /\/portfolio\/biochar\/home\/building-cycle-poster\.jpg/);
   assert.match(html, /\/portfolio\/biochar\/home\/material-background\.jpg/);
@@ -61,6 +62,8 @@ test("keeps homepage layout and motion assets compatible with cold-cache browser
   assert.match(css, /\.home-project-media\{[^}]*height:min\(46\.05vw,63\.8vh,703px\)/);
 
   for (const relativePath of [
+    "../public/portfolio/alan/alan-carolina-sphinx-wide.mp4",
+    "../public/portfolio/alan/alan-carolina-sphinx-card.mp4",
     "../public/portfolio/biochar/home/biochar-website-use.mp4",
     "../public/portfolio/museum/home-introduction-07-16.mp4",
     "../public/portfolio/mycelium/home/mycelium-website-use.mp4",
@@ -101,7 +104,8 @@ test("renders the curated Selected Work cover system", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   for (const asset of [
-    "/portfolio/alan/cover.svg",
+    "/portfolio/alan/alan-carolina-sphinx-card.webp",
+    "/portfolio/alan/alan-carolina-sphinx-card.mp4",
     "/portfolio/biochar/community-system.jpg",
     "/portfolio/proxy/hero-map-spontaneous-clear.webp",
     "/portfolio/museum/film-poster.webp",

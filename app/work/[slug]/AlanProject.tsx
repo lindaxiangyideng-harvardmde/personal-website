@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const modes = [
   ["01", "Physical", "Wavelength and time stay fixed while measured irradiance controls height, brightness, and point scale."],
   ["02", "Contribution", "Each receptor becomes an independent S(t,λ) × Rk(λ) layer; the gray field preserves the physical measurement."],
@@ -11,10 +12,10 @@ const boundaries = [
 ] as const;
 
 export default function AlanProject(){return <main className="alan-page">
-  <header className="alan-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="alan" className="alan-header"/>
 
   <section className="alan-title">
-    <div className="alan-kicker"><span>01 / 2026</span><span>Environmental Data / Computation / Ecology</span></div>
+    <div className="alan-kicker"><ProjectNumber slug="alan"/><span>Environmental Data / Computation / Ecology</span></div>
     <div className="alan-title-copy"><h1>ALAN</h1><p>Artificial Light At Night</p><strong>An interactive spectral space moving between physical measurement, receptor contribution, and explicitly interpretive perception.</strong></div>
     <dl className="alan-facts"><div><dt>Site</dt><dd>Philadelphia · single-point night measurement</dd></div><div><dt>Media</dt><dd>Spectral data · Three.js · interactive 3D space</dd></div><div><dt>Status</dt><dd>Ongoing research · full film forthcoming</dd></div></dl>
   </section>
@@ -41,6 +42,6 @@ export default function AlanProject(){return <main className="alan-page">
     <div className="alan-boundary-grid">{boundaries.map(([title,copy],index)=><article key={title}><span>{String(index+1).padStart(2,"0")}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
   </section>
 
-  <section className="alan-next"><a href="/work">Back to selected work ↗</a><a href="/work/biochar-metabolism">Next project — Biochar Metabolism →</a></section>
+  <ProjectNext slug="alan" className="alan-next"/>
   <footer><span>LINDA DENG</span><span>ALAN / ARTIFICIAL LIGHT AT NIGHT</span><span>2026</span></footer>
 </main>}

@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/hope/${name}`;
 
 function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:string;className?:string}){
@@ -5,10 +6,10 @@ function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:st
 }
 
 export default function HopeInGapProject(){return <main className="gap-page">
-  <header className="gap-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="hope-in-gap" className="gap-header"/>
 
   <section className="gap-title">
-    <div className="gap-kicker"><span>09 / 2020</span><span>Architecture / Housing</span></div>
+    <div className="gap-kicker"><ProjectNumber slug="hope-in-gap"/><span>Architecture / Housing</span></div>
     <div className="gap-title-copy"><h1>Hope<br/><i>in Gap</i></h1><p>A supportive-housing prototype that places prefabricated homes within overlooked urban gaps and uses layered porosity to protect light, air, views, and shared life.</p></div>
     <dl className="gap-facts"><div><dt>Type</dt><dd>Individual architecture studio</dd></div><div><dt>Site</dt><dd>Lincoln Heights, Los Angeles</dd></div><div><dt>Studio</dt><dd>USC · Gary Paige</dd></div></dl>
   </section>
@@ -27,6 +28,6 @@ export default function HopeInGapProject(){return <main className="gap-page">
 
   <section className="gap-reflection gap-rule"><span>DESIGN POSITION</span><h2>The prototype treats leftover land as a civic resource.</h2><p>Hope in Gap does not depend on one exceptional site or one monumental building. Its value lies in repetition with variation: prefabrication accelerates delivery, while layered porosity keeps each dense insertion open to climate, neighborhood, and collective life.</p></section>
 
-  <section className="gap-next"><a href="/work">Back to selected work ↗</a><a href="/work/maas-profit-analyzer">Next project — MaaS Profit Analyzer →</a></section>
+  <ProjectNext slug="hope-in-gap" className="gap-next"/>
   <footer><span>LINDA DENG</span><span>HOPE IN GAP</span><span>2020</span></footer>
 </main>}

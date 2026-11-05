@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/maas/${name}`;
 
 function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:string;className?:string}){
@@ -14,10 +15,10 @@ const decisions=[
 ];
 
 export default function MaasProfitAnalyzerProject(){return <main className="maas-page">
-  <header className="maas-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="maas-profit-analyzer" className="maas-header"/>
 
   <section className="maas-title">
-    <div className="maas-kicker"><span>10 / 2026</span><span>Data Product / Financial Analytics</span></div>
+    <div className="maas-kicker"><ProjectNumber slug="maas-profit-analyzer"/><span>Data Product / Financial Analytics</span></div>
     <div className="maas-title-copy"><h1>MaaS Ecosystem<br/><i>Profit Analyzer</i></h1><p>An auditable analytics product that transforms monthly AI inference billing workbooks into supplier-level profit and margin insights.</p></div>
     <dl className="maas-facts"><div><dt>Role</dt><dd>Product design · data logic · full-stack development</dd></div><div><dt>Stack</dt><dd>Flask · SQLite · Jinja · JavaScript · Chart.js</dd></div><div><dt>Context</dt><dd>CS50 final project · completed local prototype</dd></div></dl>
   </section>
@@ -43,6 +44,6 @@ export default function MaasProfitAnalyzerProject(){return <main className="maas
 
   <section className="maas-reflection maas-rule"><span>PRODUCT POSITION</span><h2>Trust is part of the product’s output.</h2><p>The prototype is intentionally local-first: it can process financial workbooks without requiring a separate database service, and each completed run remains reproducible. A hosted production version would add authentication, role-based access, durable object storage, automated tests, observability, and controlled result sharing.</p><a href="https://youtu.be/z7cDvAcKSpk" target="_blank" rel="noreferrer">Watch product demo ↗</a></section>
 
-  <section className="maas-next"><a href="/work">Back to selected work ↗</a><a href="/work/second-world">Next project — Second World →</a></section>
+  <ProjectNext slug="maas-profit-analyzer" className="maas-next"/>
   <footer><span>LINDA DENG</span><span>MAAS ECOSYSTEM PROFIT ANALYZER</span><span>2026</span></footer>
 </main>}

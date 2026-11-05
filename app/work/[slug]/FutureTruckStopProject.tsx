@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/truck-stop/${name}`;
 
 function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:string;className?:string}){
@@ -9,10 +10,10 @@ function Motion({src,poster,caption,className=""}:{src:string;poster:string;capt
 }
 
 export default function FutureTruckStopProject(){return <main className="truck-page">
-  <header className="truck-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="future-truck-stop" className="truck-header"/>
 
   <section className="truck-title">
-    <div className="truck-kicker"><span>08 / 2023</span><span>Architecture / Energy / Ecology</span></div>
+    <div className="truck-kicker"><ProjectNumber slug="future-truck-stop"/><span>Architecture / Energy / Ecology</span></div>
     <div className="truck-title-copy"><h1>Intertwined Energy<br/><i>&amp; Human Activities</i></h1><p>A future truck stop that turns longer electric-charging stays into a landscape for energy capture, environmental conditioning, and human occupation.</p></div>
     <dl className="truck-facts"><div><dt>Type</dt><dd>Individual architecture studio</dd></div><div><dt>Site</dt><dd>Long-haul transportation landscape</dd></div><div><dt>Studio</dt><dd>Columbia GSAPP · Michael Bell</dd></div></dl>
   </section>
@@ -38,6 +39,6 @@ export default function FutureTruckStopProject(){return <main className="truck-p
 
   <section className="truck-reflection truck-rule"><span>DESIGN POSITION</span><h2>Infrastructure can remain technically adaptable while becoming spatially generous.</h2><p>The proposal makes energy transition visible as an evolving architecture. Its repeated kit does not prescribe one final composition; it establishes enough order for charging technology, ecological conditioning, and the changing needs of drivers to develop together.</p></section>
 
-  <section className="truck-next"><a href="/work">Back to selected work ↗</a><a href="/work/hope-in-gap">Next project — Hope in Gap →</a></section>
+  <ProjectNext slug="future-truck-stop" className="truck-next"/>
   <footer><span>LINDA DENG</span><span>INTERTWINED ENERGY AND HUMAN ACTIVITIES</span><span>2023</span></footer>
 </main>}

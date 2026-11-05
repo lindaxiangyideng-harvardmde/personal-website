@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/conflict/${name}`;
 
 function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:string;className?:string}){
@@ -5,10 +6,10 @@ function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:st
 }
 
 export default function ConflictLightDarkProject(){return <main className="conflict-page">
-  <header className="conflict-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="conflict-light-dark" className="conflict-header"/>
 
   <section className="conflict-title">
-    <div className="conflict-kicker"><span>06 / 2023</span><span>Architecture / Material</span></div>
+    <div className="conflict-kicker"><ProjectNumber slug="conflict-light-dark"/><span>Architecture / Material</span></div>
     <div className="conflict-title-copy"><h1>Conflict in<br/><i>Light &amp; Dark</i></h1><p>An Underground Museum film institution shaped through contrasts between concrete and glass, mass and incision, darkness and projected light.</p></div>
     <dl className="conflict-facts"><div><dt>Type</dt><dd>Individual architecture studio</dd></div><div><dt>Site</dt><dd>Leimert Park, Los Angeles</dd></div><div><dt>Studio</dt><dd>Columbia GSAPP · Yo-Ichiro Hakomori</dd></div></dl>
   </section>
@@ -29,6 +30,6 @@ export default function ConflictLightDarkProject(){return <main className="confl
 
   <section className="conflict-reflection conflict-rule"><span>DESIGN POSITION</span><h2>The project does not erase conflict; it gives conflict form.</h2><p>Its central proposition is experiential rather than technological: material, geometry, and changing light allow the building to read differently across movement and time.</p></section>
 
-  <section className="conflict-next"><a href="/work">Back to selected work ↗</a><a href="/work/lens-on-the-move">Next project — Lens on the Move →</a></section>
+  <ProjectNext slug="conflict-light-dark" className="conflict-next"/>
   <footer><span>LINDA DENG</span><span>CONFLICT IN LIGHT AND DARK</span><span>2023</span></footer>
 </main>}

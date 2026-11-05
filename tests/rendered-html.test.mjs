@@ -22,7 +22,9 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /class="home-shell"/);
   assert.match(html, /Systems become/);
   assert.match(html, /spatial propositions/);
-  assert.match(html, /href="\/work"/);
+  assert.match(html, /href="\/product-design"/);
+  assert.match(html, /href="\/architecture"/);
+  assert.match(html, /class="enter-work" href="\/product-design"/);
   assert.match(html, /class="home-project-backdrop"/);
   assert.match(html, /data-project="alan"/);
   assert.match(html, /\/portfolio\/alan\/alan-carolina-sphinx-wide\.webp/);
@@ -76,9 +78,10 @@ test("keeps homepage layout and motion assets compatible with cold-cache browser
   }
 });
 
-test("serves the work index, about page, and all eleven project routes", async () => {
+test("serves both category indexes, the about page, and all eleven project routes", async () => {
   const routes = [
-    ["/work", /Selected[\s\S]*research systems/],
+    ["/product-design", /Product[\s\S]*design work/],
+    ["/architecture", /Selected[\s\S]*spatial systems/],
     ["/about", /Designing relationships/],
     ["/work/alan", /Artificial Light At Night/],
     ["/work/biochar-metabolism", /Biochar Metabolism/],
@@ -99,13 +102,34 @@ test("serves the work index, about page, and all eleven project routes", async (
   }
 });
 
-test("renders the curated Selected Work cover system", async () => {
+test("redirects the former combined /work index to Product Design", async () => {
   const response = await render("/work");
+  assert.ok([301, 302, 303, 307, 308].includes(response.status), `unexpected status ${response.status}`);
+  assert.match(response.headers.get("location") ?? "", /\/product-design$/);
+});
+
+test("leads Product Design with MaaS, then ALAN, then Second World", async () => {
+  const response = await render("/product-design");
   assert.equal(response.status, 200);
   const html = await response.text();
   for (const asset of [
+    "/portfolio/maas/dashboard-top.png",
     "/portfolio/alan/alan-carolina-sphinx-card.webp",
     "/portfolio/alan/alan-carolina-sphinx-card.mp4",
+    "/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png",
+  ]) assert.match(html, new RegExp(asset.replaceAll("/", "\\/")));
+  const order = ["/work/maas-profit-analyzer", "/work/alan", "/work/second-world"].map(href => html.indexOf(`href="${href}"`));
+  assert.ok(order.every(index => index > -1), "every product project is listed");
+  assert.deepEqual([...order].sort((a, b) => a - b), order, "product projects appear in curated order");
+  for (const slug of ["biochar-metabolism", "proxy-landscape", "hope-in-gap"]) assert.doesNotMatch(html, new RegExp(`href="/work/${slug}"`));
+  assert.match(html, /href="\/architecture"/);
+});
+
+test("collects every architecture project on its own index", async () => {
+  const response = await render("/architecture");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const asset of [
     "/portfolio/biochar/community-system.jpg",
     "/portfolio/proxy/hero-map-spontaneous-clear.webp",
     "/portfolio/museum/film-poster.webp",
@@ -114,19 +138,34 @@ test("renders the curated Selected Work cover system", async () => {
     "/portfolio/lens/forest-hero.webp",
     "/portfolio/truck-stop/hero.webp",
     "/portfolio/hope/hero.webp",
-    "/portfolio/maas/dashboard-top.png",
-    "/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png",
   ]) assert.match(html, new RegExp(asset.replaceAll("/", "\\/")));
   assert.doesNotMatch(html, /Final images will replace these portfolio spreads/);
-  assert.ok(html.indexOf("/work/alan") < html.indexOf("/work/biochar-metabolism"));
+  assert.ok(html.indexOf("/work/biochar-metabolism") < html.indexOf("/work/hope-in-gap"));
+  for (const slug of ["maas-profit-analyzer", "alan", "second-world"]) assert.doesNotMatch(html, new RegExp(`href="/work/${slug}"`));
 });
 
-test("renders ALAN as the first project with its curated interactive spectrum", async () => {
+test("numbers projects and links to the next project within their category", async () => {
+  const cases = [
+    ["/work/maas-profit-analyzer", "01 / 2026", "/product-design", "/work/alan"],
+    ["/work/alan", "02 / 2026", "/product-design", "/work/second-world"],
+    ["/work/second-world", "03 / 2026", "/product-design", "/work/maas-profit-analyzer"],
+    ["/work/biochar-metabolism", "01 / 2022", "/architecture", "/work/proxy-landscape"],
+    ["/work/hope-in-gap", "08 / 2020", "/architecture", "/work/biochar-metabolism"],
+  ];
+  for (const [path, kicker, categoryHref, nextHref] of cases) {
+    const html = await (await render(path)).text();
+    assert.match(html, new RegExp(kicker.replaceAll("/", "\\/")), path);
+    assert.match(html, new RegExp(`href="${categoryHref}" aria-current="page"`), `${path} highlights its category`);
+    assert.match(html, new RegExp(`href="${nextHref}"`), `${path} links to the next project`);
+  }
+});
+
+test("renders ALAN with its curated interactive spectrum", async () => {
   const response = await render("/work/alan");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /class="alan-page"/);
-  assert.match(html, /01 \/ 2026/);
+  assert.match(html, /02 \/ 2026/);
   assert.match(html, /Physical/);
   assert.match(html, /Contribution/);
   assert.match(html, /Interpretive/);

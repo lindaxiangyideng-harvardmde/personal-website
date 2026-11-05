@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
+import { SiteNav } from "./SiteNav";
 
 const fields = [
   { name: "Architecture", note: "spatial effect" },
@@ -196,7 +197,7 @@ export default function Home() {
       <header className="home-header">
         <a className="home-mark" href="/" aria-label="Linda Deng home">LINDA DENG</a>
         <p>Design / Research / Technology</p>
-        <nav aria-label="Primary navigation"><a href="/work">Selected Work</a><a href="/about">About</a></nav>
+        <SiteNav />
       </header>
 
       <section className="home-stage" aria-label="Rotating research landscapes">
@@ -270,7 +271,7 @@ export default function Home() {
         </article>)}
 
         {scene > 0 && currentProject ? <div className="scene-status" aria-live="polite"><span>{String(scene + 1).padStart(2, "0")} / {String(sceneCount).padStart(2, "0")}</span><p>{currentProject.title}</p><small>{currentProject.fields}</small></div> : null}
-        <a className="enter-work" href="/work">Selected Work <span>↓</span></a>
+        <a className="enter-work" href="/product-design">Product Design <span>↓</span></a>
       </section>
 
       <div className="scene-controls" aria-label="Homepage scenes">{Array.from({ length: sceneCount }, (_, index) => <button key={index} type="button" className={scene === index ? "is-current" : ""} onClick={() => setScene(index)} aria-label={`Show scene ${index + 1}`}><i /></button>)}</div>

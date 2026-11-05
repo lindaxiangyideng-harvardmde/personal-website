@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset = (name: string) => `/portfolio/biochar/${name}`;
 
 function Figure({src, alt, caption, className = ""}: {src:string; alt:string; caption:string; className?:string}) {
@@ -9,10 +10,10 @@ function Figure({src, alt, caption, className = ""}: {src:string; alt:string; ca
 
 export default function BiocharProject() {
   return <main className="biochar-page">
-    <header className="biochar-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+    <ProjectHeader slug="biochar-metabolism" className="biochar-header"/>
 
     <section className="biochar-title">
-      <div className="biochar-kicker"><span>02 / 2022</span><span>Architecture / Material / Ecology</span></div>
+      <div className="biochar-kicker"><ProjectNumber slug="biochar-metabolism"/><span>Architecture / Material / Ecology</span></div>
       <div className="biochar-title-copy">
         <h1>Biochar<br/><i>Metabolism</i></h1>
         <p>A closed-loop infrastructure that converts municipal biomass waste into carbon-storing building products, allowing an existing building to participate in its own repair.</p>
@@ -94,7 +95,7 @@ export default function BiocharProject() {
       <div><p>The project’s central contribution is a change in architectural time. Repair is no longer an isolated event performed with materials imported from elsewhere; it becomes an observable cycle tied to local waste and continuous occupation.</p><p>This remains a speculative framework. Material performance, emissions, manufacturing tolerances, and the logistics of mass production require further testing. That uncertainty is part of the research: the design identifies where architectural ambition must meet material validation.</p></div>
     </section>
 
-    <section className="biochar-next"><a href="/work">Back to selected work ↗</a><a href="/work/proxy-landscape">Next project — The Proxy Landscape →</a></section>
+    <ProjectNext slug="biochar-metabolism" className="biochar-next"/>
     <footer><span>LINDA DENG</span><span>BIOCHAR METABOLISM</span><span>2022</span></footer>
   </main>;
 }

@@ -223,16 +223,21 @@
 .work-index-page .index-project figure>img,.work-index-page .index-project figure>.index-project-video,.work-index-page .additional-project figure>img{position:relative;z-index:1;filter:saturate(.66) contrast(.93) brightness(.98)}
 .work-index-page .index-project:hover figure::after,.work-index-page .index-project:focus figure::after,.work-index-page .additional-project:hover figure::after,.work-index-page .additional-project:focus figure::after{opacity:.2}
 .work-index-page .index-project:hover figure>img,.work-index-page .index-project:focus figure>img,.work-index-page .index-project:hover figure>.index-project-video,.work-index-page .index-project:focus figure>.index-project-video,.work-index-page .additional-project:hover figure>img,.work-index-page .additional-project:focus figure>img{filter:saturate(.9) contrast(.98) brightness(1)}
-.work-index-page .project-01 figure>img{object-position:50% 52%}
-.work-index-page .project-02 figure>img{object-position:50% 56%}
-.work-index-page .project-03 figure>img{object-position:50% 50%}
-.work-index-page .project-04 figure>img{object-position:50% 47%}
-.work-index-page .project-05 figure>img{object-position:58% 50%}
-.work-index-page .project-06 figure>img{object-position:52% 50%}
-.work-index-page .project-07 figure>img{object-position:50% 50%}
-.work-index-page .project-08 figure>img{object-position:50% 48%}
-.work-index-page .project-09 figure,.work-index-page .project-10 figure{background:#07090d}
-.work-index-page .project-09 figure>img{object-position:50% 8%;filter:saturate(.72) contrast(.96) brightness(.9)}
-.work-index-page .project-10 figure>img{object-position:50% 50%;filter:saturate(.78) contrast(1.02) brightness(.86)}
-.work-index-page .project-09:hover figure>img,.work-index-page .project-09:focus figure>img,.work-index-page .project-10:hover figure>img,.work-index-page .project-10:focus figure>img{filter:saturate(1) contrast(1.04) brightness(.98)}
+.work-index-page .card-alan figure>img{object-position:50% 52%}
+.work-index-page .card-biochar-metabolism figure>img{object-position:50% 56%}
+.work-index-page .card-proxy-landscape figure>img{object-position:50% 50%}
+.work-index-page .card-museum-reorganization figure>img{object-position:50% 47%}
+.work-index-page .card-mycelium-living-facade figure>img{object-position:58% 50%}
+.work-index-page .card-conflict-light-dark figure>img{object-position:52% 50%}
+.work-index-page .card-lens-on-the-move figure>img{object-position:50% 50%}
+.work-index-page .card-future-truck-stop figure>img{object-position:50% 48%}
+.work-index-page .card-hope-in-gap figure,.work-index-page .card-maas-profit-analyzer figure{background:#07090d}
+.work-index-page .card-hope-in-gap figure>img{object-position:50% 8%;filter:saturate(.72) contrast(.96) brightness(.9)}
+.work-index-page .card-maas-profit-analyzer figure>img{object-position:50% 50%;filter:saturate(.78) contrast(1.02) brightness(.86)}
+.work-index-page .card-hope-in-gap:hover figure>img,.work-index-page .card-hope-in-gap:focus figure>img,.work-index-page .card-maas-profit-analyzer:hover figure>img,.work-index-page .card-maas-profit-analyzer:focus figure>img{filter:saturate(1) contrast(1.04) brightness(.98)}
 .work-index-page .additional-project figure figcaption{z-index:5}
+
+/* Category navigation: Product Design / Architecture & Spatial Work */
+nav a[aria-current="page"]{border-bottom:1px solid currentColor;padding-bottom:3px}
+.category-crosslink{padding-bottom:6vw}.category-crosslink .additional-work-head{height:auto;border-bottom:0}.category-crosslink .additional-work-head a{grid-column:1/-1;justify-self:start;font:500 10px/1.2 var(--font-mono),monospace;letter-spacing:.055em;text-transform:uppercase;border-bottom:1px solid;padding-bottom:5px;transition:opacity .2s}.category-crosslink .additional-work-head a:hover{opacity:.55}
+@media(max-width:760px){.index-header{grid-template-columns:auto 1fr;gap:12px}.index-header nav a{white-space:nowrap}.category-crosslink{padding-bottom:70px}.category-crosslink .additional-work-head a{display:inline-block;margin-top:30px}}

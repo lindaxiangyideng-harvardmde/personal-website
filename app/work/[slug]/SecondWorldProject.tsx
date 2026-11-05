@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/second-world/${name}`;
 
 const channels=[
@@ -28,8 +29,8 @@ const integrity=[
 function KeyFrame({time,file,copy}:{time:string;file:string;copy:string}){return <figure className="sw-keyframe"><img src={asset(`p5_animation/previews/${file}`)} alt={`Second World animation at ${time}`} loading="lazy"/><figcaption><span>{time}</span><p>{copy}</p></figcaption></figure>}
 
 export default function SecondWorldProject(){return <main className="second-world-page">
-  <header className="sw-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
-  <section className="sw-title"><div className="sw-kicker"><span>11 / 2026</span><span>Data Visualization / Behavioral Research</span></div><div className="sw-title-copy"><h1>Second<br/><i>World</i></h1><p>A synchronized behavioral portrait comparing what I intended to do, what my digital avatar actually did, and how my body unconsciously responded.</p></div><dl className="sw-facts"><div><dt>Duration</dt><dd>2,996 recorded seconds → 60-second animation</dd></div><div><dt>Media</dt><dd>Data audit · p5.js · interactive animation</dd></div><div><dt>Structure</dt><dd>Six synchronized temporal channels</dd></div></dl></section>
+  <ProjectHeader slug="second-world" className="sw-header"/>
+  <section className="sw-title"><div className="sw-kicker"><ProjectNumber slug="second-world"/><span>Data Visualization / Behavioral Research</span></div><div className="sw-title-copy"><h1>Second<br/><i>World</i></h1><p>A synchronized behavioral portrait comparing what I intended to do, what my digital avatar actually did, and how my body unconsciously responded.</p></div><dl className="sw-facts"><div><dt>Duration</dt><dd>2,996 recorded seconds → 60-second animation</dd></div><div><dt>Media</dt><dd>Data audit · p5.js · interactive animation</dd></div><div><dt>Structure</dt><dd>Six synchronized temporal channels</dd></div></dl></section>
   <section className="sw-dark sw-live"><div className="sw-live-head"><span>LIVE BEHAVIORAL PORTRAIT</span><p>Play, pause, scrub, or inspect 15 / 38 / 60 seconds.</p></div><iframe src={asset("p5_animation/")} title="Second World sixty-second behavioral data animation" loading="eager"/></section>
 
   <section className="sw-question sw-rule"><span>BEHAVIORAL QUESTION</span><h2>One experience was recorded through three different selves.</h2><p>The visualization does not score the player or explain behavior psychologically. It compares three temporal accounts of one gaming session: the route I intended to follow, the actions performed by my digital avatar, and the changing posture of my physical body. Their agreements and mismatches accumulate into one behavioral trace.</p><div className="sw-three-selves"><article><span>01</span><h3>Intention</h3><p>What I planned to do.</p></article><i>→</i><article><span>02</span><h3>Digital self</h3><p>What the avatar actually did.</p></article><i>→</i><article><span>03</span><h3>Physical self</h3><p>How the body responded.</p></article></div></section>
@@ -46,6 +47,6 @@ export default function SecondWorldProject(){return <main className="second-worl
 
   <section className="sw-integrity sw-rule"><div className="sw-section-head"><span>06 / DATA INTEGRITY</span><h2>Uncertainty stays visible inside the finished portrait.</h2><p>The project preserves the limits of the recording instead of converting them into confident-looking graphics. Every derived record retains its source row, raw timestamp, and assumption flags.</p></div><div className="sw-integrity-grid">{integrity.map(([value,label])=><article key={label}><strong>{value}</strong><span>{label}</span></article>)}</div></section>
   <section className="sw-reflection sw-rule"><span>VISUALIZATION POSITION</span><h2>An instrument for reading one recorded experience—not a dashboard and not a literal game map.</h2><p>The final animation makes three temporal selves visible without collapsing them into one measure of intensity. Intention supplies a reference, digital action builds behavioral matter, and the physical body changes pressure and depth. Their mismatches are not errors to correct; they are the subject of the work.</p></section>
-  <section className="sw-next"><a href="/work">Back to selected work ↗</a><a href="/work/alan">Return to project 01 — ALAN →</a></section>
+  <ProjectNext slug="second-world" className="sw-next"/>
   <footer><span>LINDA DENG</span><span>SECOND WORLD</span><span>2026</span></footer>
 </main>}

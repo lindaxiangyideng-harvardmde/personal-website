@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/mycelium/${name}`;
 
 function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:string;className?:string}){
@@ -29,10 +30,10 @@ const city=[
 ] as const;
 
 export default function MyceliumFacadeProject(){return <main className="mycelium-page">
-  <header className="mycelium-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="mycelium-living-facade" className="mycelium-header"/>
 
   <section className="mycelium-title">
-    <div className="mycelium-kicker"><span>05 / 2025</span><span>Architecture / Material / Ecology</span></div>
+    <div className="mycelium-kicker"><ProjectNumber slug="mycelium-living-facade"/><span>Architecture / Material / Ecology</span></div>
     <div className="mycelium-title-copy"><h1>Mycelium<br/><i>Living Facade</i></h1><p>A time-based façade system in which agricultural waste, woven structure, fungal growth, seasonal decay, and on-site collection form one visible material cycle.</p></div>
     <dl className="mycelium-facts"><div><dt>Type</dt><dd>Collaborative material research and façade proposal</dd></div><div><dt>Site</dt><dd>Los Angeles parking structure</dd></div><div><dt>Focus</dt><dd>Living materials · seasonal change · regenerative assembly</dd></div></dl>
   </section>
@@ -53,6 +54,6 @@ export default function MyceliumFacadeProject(){return <main className="mycelium
 
   <section className="mycelium-reflection mycelium-rule"><span>REFLECTION</span><h2>Designing with a material that refuses to remain finished.</h2><div><p>The project’s contribution is temporal: it separates the permanent host from a renewable surface and treats decay as information. The façade makes biological change visible at the scale of public architecture.</p><p>It remains a speculative prototype. Growth uniformity, fire and moisture performance, attachment, maintenance labor, safe collection, and full life-cycle carbon accounting require physical testing before the system could operate at building scale.</p></div></section>
 
-  <section className="mycelium-next"><a href="/work">Back to selected work ↗</a><a href="/work/conflict-light-dark">Next project — Conflict of Light &amp; Dark →</a></section>
+  <ProjectNext slug="mycelium-living-facade" className="mycelium-next"/>
   <footer><span>LINDA DENG</span><span>MYCELIUM LIVING FACADE</span><span>2025</span></footer>
 </main>}

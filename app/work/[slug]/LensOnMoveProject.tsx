@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/lens/${name}`;
 
 function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:string;className?:string}){
@@ -5,10 +6,10 @@ function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:st
 }
 
 export default function LensOnMoveProject(){return <main className="lens-page">
-  <header className="lens-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="lens-on-the-move" className="lens-header"/>
 
   <section className="lens-title">
-    <div className="lens-kicker"><span>07 / 2024</span><span>Architecture / Adaptable Dwelling</span></div>
+    <div className="lens-kicker"><ProjectNumber slug="lens-on-the-move"/><span>Architecture / Adaptable Dwelling</span></div>
     <div className="lens-title-copy"><h1>Lens on<br/><i>the Move</i></h1><p>A transformable microhome for two nomadic photographers, designed to compress for travel and unfold in response to city, landscape, and community.</p></div>
     <dl className="lens-facts"><div><dt>Type</dt><dd>Microhome competition</dd></div><div><dt>Users</dt><dd>Nomadic photographer couple</dd></div><div><dt>Modes</dt><dd>Road · Urban · Rural · Campus</dd></div></dl>
   </section>
@@ -29,6 +30,6 @@ export default function LensOnMoveProject(){return <main className="lens-page">
 
   <section className="lens-reflection lens-rule"><span>DESIGN POSITION</span><h2>Mobility is not only the ability to move; it is the ability to belong differently in each place.</h2><p>The microhome protects a consistent domestic core while allowing its envelope and social boundary to change. Adaptation becomes the project’s main architectural material.</p></section>
 
-  <section className="lens-next"><a href="/work">Back to selected work ↗</a><a href="/work/future-truck-stop">Next project — Intertwined Energy and Human Activities →</a></section>
+  <ProjectNext slug="lens-on-the-move" className="lens-next"/>
   <footer><span>LINDA DENG</span><span>LENS ON THE MOVE</span><span>2024</span></footer>
 </main>}

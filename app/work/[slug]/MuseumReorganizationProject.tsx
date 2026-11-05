@@ -1,3 +1,4 @@
+import {ProjectHeader, ProjectNext, ProjectNumber} from "../ProjectChrome";
 const asset=(name:string)=>`/portfolio/museum/${name}`;
 
 function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:string;className?:string}){
@@ -5,10 +6,10 @@ function Figure({src,alt,caption,className=""}:{src:string;alt:string;caption:st
 }
 
 export default function MuseumReorganizationProject(){return <main className="museum-page">
-  <header className="museum-header"><a className="mark" href="/">LINDA DENG</a><nav><a href="/work">← Index</a><a href="/about">About</a></nav></header>
+  <ProjectHeader slug="museum-reorganization" className="museum-header"/>
 
   <section className="museum-title">
-    <div className="museum-kicker"><span>04 / 2023</span><span>Architecture / Computation</span></div>
+    <div className="museum-kicker"><ProjectNumber slug="museum-reorganization"/><span>Architecture / Computation</span></div>
     <div className="museum-title-copy"><h1>Museum<br/><i>Reorganization</i></h1><p>A continuous computational workflow that generates exhibition layouts, finds efficient routes, and measures visual qualities while preserving the museum’s freedom of exploration.</p></div>
     <dl className="museum-facts"><div><dt>Type</dt><dd>Collaborative computational design research</dd></div><div><dt>Site</dt><dd>21st Century Museum of Contemporary Art, Kanazawa</dd></div><div><dt>Focus</dt><dd>Generative layout · route finding · spatial analysis</dd></div></dl>
   </section>
@@ -31,6 +32,6 @@ export default function MuseumReorganizationProject(){return <main className="mu
 
   <section className="museum-reflection museum-rule"><span>REFLECTION</span><h2>A decision system is strongest when its limits remain visible.</h2><div><p>The project’s central contribution is continuity: layout generation, navigation, spatial perception, and communication are treated as connected design questions rather than separate analyses. The value lies in producing a readable family of options for recurring curatorial decisions.</p><p>Shortest distance is not the same as a complete museum experience. Visitor behavior, accessibility, crowding, exhibition content, construction details, and the labor of periodic reorganization would require further observation and physical testing before the workflow could guide an operational museum.</p></div></section>
 
-  <section className="museum-next"><a href="/work">Back to selected work ↗</a><a href="/work/mycelium-living-facade">Next project — Mycelium Living Facade →</a></section>
+  <ProjectNext slug="museum-reorganization" className="museum-next"/>
   <footer><span>LINDA DENG</span><span>MUSEUM REORGANIZATION</span><span>2023</span></footer>
 </main>}

@@ -20,13 +20,14 @@ This starter does not use `wrangler.jsonc`.
 
 ## Deployment (Cloudflare Workers)
 
-Every push to `main` builds and deploys the site through Cloudflare Workers
-Builds, which is connected to this GitHub repository.
+Every push to `main` runs `.github/workflows/deploy.yml` on GitHub Actions: it
+installs dependencies, runs `npm test` (which builds the site), and then runs
+`npx wrangler deploy`. A failing test stops the deploy. The workflow can also be
+started by hand from the repository's Actions tab ("Run workflow").
 
-- Worker name: `linda-deng-portfolio`. It is set in `vite.config.ts` and must
-  match the Worker name in the Cloudflare dashboard.
-- Build command: `npm run build`
-- Deploy command: `npx wrangler deploy`
+- Repository secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+- Worker name: `linda-deng-portfolio`, set in `vite.config.ts`.
+- Live URL: https://linda-deng-portfolio.linda-deng.workers.dev
 - Node version: pinned by `.node-version`. Use npm only; there is no pnpm lockfile.
 
 The build writes `dist/server/wrangler.json` and `.wrangler/deploy/config.json`,

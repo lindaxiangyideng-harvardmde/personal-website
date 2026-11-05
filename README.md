@@ -18,6 +18,25 @@ npm run build
 
 This starter does not use `wrangler.jsonc`.
 
+## Deployment (Cloudflare Workers)
+
+Every push to `main` builds and deploys the site through Cloudflare Workers
+Builds, which is connected to this GitHub repository.
+
+- Worker name: `linda-deng-portfolio`. It is set in `vite.config.ts` and must
+  match the Worker name in the Cloudflare dashboard.
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Node version: pinned by `.node-version`. Use npm only; there is no pnpm lockfile.
+
+The build writes `dist/server/wrangler.json` and `.wrangler/deploy/config.json`,
+so `wrangler deploy` needs no checked-in Wrangler config. To check a deploy
+locally without uploading, run:
+
+```bash
+npm run build && npx wrangler deploy --dry-run
+```
+
 ## Included Shape
 
 - edit site code under `app/`

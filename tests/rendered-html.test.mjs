@@ -25,6 +25,12 @@ test("server-renders the one-screen research landscape entrance", async () => {
   assert.match(html, /href="\/product-design"/);
   assert.match(html, /href="\/architecture"/);
   assert.match(html, /class="enter-work" href="\/product-design"/);
+  // Opening scene: the 3D research field, server-rendered with every project label and a default panel
+  assert.match(html, /class="research-field is-loading"/);
+  assert.equal(html.match(/class="rf-hub/g)?.length, 11, "one field label per project");
+  assert.ok(html.indexOf("MaaS Ecosystem Profit Analyzer") < html.indexOf("Biochar Metabolism"), "product work leads the field");
+  assert.match(html, /class="rf-panel"[\s\S]*href="\/work\/maas-profit-analyzer"/);
+  assert.doesNotMatch(html, /class="field-orbit"/);
   assert.match(html, /class="home-project-backdrop"/);
   assert.match(html, /data-project="alan"/);
   assert.match(html, /\/portfolio\/alan\/alan-carolina-sphinx-wide\.webp/);

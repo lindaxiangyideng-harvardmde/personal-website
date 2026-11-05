@@ -1,6 +1,6 @@
 export const projects = {
   "alan": {
-    title:"ALAN", year:"2026", tags:"Environmental Data / Computation / Ecology", image:"/portfolio/alan/cover.svg", secondImage:"/portfolio/alan/cover.svg",
+    title:"ALAN", year:"2026", color:"#5f789f", tags:"Environmental Data / Computation / Ecology", image:"/portfolio/alan/cover.svg", secondImage:"/portfolio/alan/cover.svg",
     lead:"An interactive spectral space that translates artificial light at night into physical measurement, receptor-weighted contribution, and explicitly interpretive views.",
     question:"How can artificial light at night be read across measurement and species response without overstating what the data can prove?",
     overview:"ALAN begins with absolute downwelling spectral irradiance recorded in Philadelphia. Wavelength, irradiance, and time form a shared scientific frame; modeled receptor curves then reveal how different channels contribute without collapsing them into a single idea of vision. A final interpretive mode turns those relationships into a navigable narrative space while keeping its non-measured status visible.",
@@ -8,7 +8,7 @@ export const projects = {
     finding:"The project operates between instrument and narrative. Its physical and contribution views remain tied to the measured spectral coordinates, while its interpretive space makes the boundary between scientific evidence and spatial imagination explicit."
   },
   "biochar-metabolism": {
-    title:"Biochar Metabolism", year:"2022", tags:"Architecture / Material / Ecology", image:"/portfolio/biochar/community-system.jpg", secondImage:"/portfolio/biochar/building-system.jpg",
+    title:"Biochar Metabolism", year:"2022", color:"#657d84", tags:"Architecture / Material / Ecology", image:"/portfolio/biochar/community-system.jpg", secondImage:"/portfolio/biochar/building-system.jpg",
     lead:"A closed-loop infrastructure that converts municipal solid waste into carbon-storing building products—and lets an existing building participate in its own repair.",
     question:"Can urban waste become the material of architectural repair?",
     overview:"New York City exports and disposes of enormous quantities of municipal solid waste while construction remains one of the largest sources of greenhouse gas emissions. The project brings these two conditions into one system: biomass waste is collected locally, converted through pyrolysis, and returned as biochar additives for plaster, concrete, insulation, and 3D-printed elements.",
@@ -16,7 +16,7 @@ export const projects = {
     finding:"The branching trash-chute system is both infrastructure and symbol: like a plant’s vascular system, it feeds the building from within. At the urban scale it grows into a network of collection routes and sky gardens, shifting renovation from a one-time intervention toward an ongoing metabolism."
   },
   "proxy-landscape": {
-    title:"The Proxy Landscape", year:"2022", tags:"Architecture / Computation / Ecology", image:"/portfolio/proxy/hero-map-spontaneous-clear.webp", secondImage:"/portfolio/proxy/map-site-clear.webp",
+    title:"The Proxy Landscape", year:"2022", color:"#7198a5", tags:"Architecture / Computation / Ecology", image:"/portfolio/proxy/hero-map-spontaneous-clear.webp", secondImage:"/portfolio/proxy/map-site-clear.webp",
     lead:"A study of water as a proxy for urban conditions, leading to six low-tech machines that interact with the changing salt-marsh landscape of Jamaica Bay.",
     question:"Can water reveal—and help repair—the hybrid urban landscape?",
     overview:"Water is separated into two systems according to the forces that move it: spontaneous flows driven by gravity and wind, and unspontaneous flows captured, pumped, blocked, and discharged by urban infrastructure. Mapping their intersections reveals where pollution, erosion, and sea-level rise accelerate salt-marsh degradation.",
@@ -24,7 +24,7 @@ export const projects = {
     finding:"The machines do not replace the landscape with infrastructure. They make landscape labor visible: filtering runoff, catching sediment, lifting marsh, mixing algae and attenuating waves. Together they stage a gradual journey from urban material to water, marsh, soil and shared habitat."
   },
   "museum-reorganization": {
-    title:"Museum Reorganization", year:"2023", tags:"Architecture / Computation", image:"/portfolio/museum/film-poster.webp", secondImage:"/portfolio/museum/comparison-table.webp",
+    title:"Museum Reorganization", year:"2023", color:"#ad7447", tags:"Architecture / Computation", image:"/portfolio/museum/film-poster.webp", secondImage:"/portfolio/museum/comparison-table.webp",
     lead:"A continuous computational workflow that reorganizes exhibition rooms, finds routes, and measures visual qualities while preserving the museum’s freedom of exploration.",
     question:"Can optimization preserve, rather than reduce, spatial freedom?",
     overview:"The Kanazawa Art Museum has a fixed circular boundary and an open plan, yet irregular galleries can make navigation difficult. The research treats layout, route, and view as related problems. A genetic algorithm generates room configurations with comparable areas, then route-finding and isovist analysis test their accessibility and spatial character.",
@@ -32,7 +32,7 @@ export const projects = {
     finding:"The result is not one optimum plan. It is a readable family of alternatives for curators and museum owners: layouts can be periodically reorganized while visitors retain multiple choices of movement, view and discovery."
   },
   "mycelium-living-facade": {
-    title:"Mycelium Living Facade", year:"2025", tags:"Architecture / Material / Ecology", image:"/portfolio/mycelium/hero-facade.webp", secondImage:"/portfolio/mycelium/season-summer.webp",
+    title:"Mycelium Living Facade", year:"2025", color:"#8b7855", tags:"Architecture / Material / Ecology", image:"/portfolio/mycelium/hero-facade.webp", secondImage:"/portfolio/mycelium/season-summer.webp",
     lead:"A living facade that uses mycelium’s growth, maturity, and decay as an architectural clock—linking seasonal change, agricultural waste, and public life.",
     question:"Can a facade be designed as a living material cycle rather than a permanent surface?",
     overview:"The proposal begins with mycelium as both material and process. Agricultural by-products provide a substrate; branching fungal networks bind that matter into lightweight components; seasonal growth and decomposition then change the facade’s appearance and performance over time.",
@@ -40,7 +40,7 @@ export const projects = {
     finding:"Instead of hiding material change, the facade makes duration visible. Its value lies in an architecture that can grow, perform, weather, and return—allowing maintenance and decay to become part of the public narrative of the building."
   },
   "conflict-light-dark": {
-    title:"Conflict in Light and Dark", year:"2023", tags:"Architecture / Material", image:"/portfolio/conflict/day.webp", secondImage:"/portfolio/conflict/building-section.webp",
+    title:"Conflict in Light and Dark", year:"2023", color:"#627b8e", tags:"Architecture / Material", image:"/portfolio/conflict/day.webp", secondImage:"/portfolio/conflict/building-section.webp",
     lead:"A film institution that translates the Underground Museum’s cultural tensions into contrasts between light and shadow, concrete and glass, solid and void.",
     question:"Can light and material contrast make cultural conflict spatially legible?",
     overview:"Located in Leimert Park at the meeting point of neighborhoods with different cultural identities, the project draws from the Underground Museum’s use of photography to address history, background, and struggle. A massive concrete volume creates dark, weighty rooms while glass tunnels cut through it to introduce light, views, and movement.",
@@ -48,7 +48,7 @@ export const projects = {
     finding:"The facade becomes a changing film surface. During the day, light penetrates a seemingly solid building; at night, silhouettes and interior activity are projected outward, making cultural expression part of the architecture’s public presence."
   },
   "lens-on-the-move": {
-    title:"Lens on the Move", year:"2024", tags:"Architecture / Material", image:"/portfolio/lens/forest-hero.webp", secondImage:"/portfolio/lens/four-modes.webp",
+    title:"Lens on the Move", year:"2024", color:"#c97670", tags:"Architecture / Material", image:"/portfolio/lens/forest-hero.webp", secondImage:"/portfolio/lens/four-modes.webp",
     lead:"A transformable microhome for a nomadic photographer couple, designed to shift between travel, compact urban living, expanded rural dwelling, and collective camp life.",
     question:"Can one compact home adapt its spatial form to four modes of nomadic life?",
     overview:"The project responds to a lifestyle moving between forests, mountains, deserts, and dense cities. Instead of treating mobility as a single compressed condition, the home changes its volume, enclosure, and social capacity according to the available land and the occupants’ relationship to the surrounding landscape.",
@@ -56,7 +56,7 @@ export const projects = {
     finding:"Mobility becomes more than transportation. The same small dwelling can protect, expand, frame landscapes, and support community—turning adaptation into the project’s central spatial system."
   },
   "future-truck-stop": {
-    title:"Intertwined Energy and Human Activities", year:"2023", tags:"Architecture / Ecology", image:"/portfolio/future-truck-stop.jpg", secondImage:"/portfolio/future-truck-stop.jpg",
+    title:"Intertwined Energy and Human Activities", year:"2023", color:"#aa7d2c", tags:"Architecture / Ecology", image:"/portfolio/future-truck-stop.jpg", secondImage:"/portfolio/future-truck-stop.jpg",
     lead:"A future truck stop that combines renewable-energy capture, modular growth, ecological repair, and longer-duration spaces for electric-truck drivers.",
     question:"Can energy infrastructure evolve into an ecological and human landscape?",
     overview:"Electrifying long-haul trucking increases charging time and dramatically changes the scale of electricity demand. The proposal treats the truck stop as an adaptable field rather than a fixed building: energy-producing and user-centered modules are installed in phases while shaping shade, vegetation, soil, water, visibility, and driver well-being.",
@@ -64,7 +64,7 @@ export const projects = {
     finding:"The truck stop becomes a productive landscape where machines and human activities do not compete for space. Energy capture, ecological performance, and driver experience grow together as one adaptable infrastructure."
   },
   "hope-in-gap": {
-    title:"Hope in Gap", year:"2020", tags:"Architecture", image:"/portfolio/hope/hero.webp", secondImage:"/portfolio/hope/site-collage.webp",
+    title:"Hope in Gap", year:"2020", color:"#78943f", tags:"Architecture", image:"/portfolio/hope/hero.webp", secondImage:"/portfolio/hope/site-collage.webp",
     lead:"A supportive-housing prototype that occupies overlooked urban gaps with prefabricated units organized through layered indoor and outdoor porosity.",
     question:"Can leftover urban space become a repeatable framework for supportive housing?",
     overview:"The project begins with two constraints affecting housing in Los Angeles: limited affordable land and the long duration of conventional construction. It identifies interstitial sites in Lincoln Heights—from building gaps and parking-lot edges to narrow street strips—and combines them with prefabricated modules that can be adapted to different site conditions.",
@@ -72,7 +72,7 @@ export const projects = {
     finding:"Layered porosity allows a dense modular system to remain open to light, air, views, and social contact. The proposal treats the city’s leftover spaces not as isolated exceptions, but as a distributed housing resource."
   },
   "maas-profit-analyzer": {
-    title:"MaaS Ecosystem Profit Analyzer", year:"2026", tags:"Data Product / Financial Analytics / Full-stack", image:"/portfolio/maas/dashboard-top.png", secondImage:"/portfolio/maas/dashboard-charts.png",
+    title:"MaaS Ecosystem Profit Analyzer", year:"2026", color:"#2f6c52", tags:"Data Product / Financial Analytics / Full-stack", image:"/portfolio/maas/dashboard-top.png", secondImage:"/portfolio/maas/dashboard-charts.png",
     lead:"An auditable analytics product that transforms monthly AI inference billing workbooks into supplier-level profit and margin insights.",
     question:"How can fragmented billing data become a trustworthy profitability decision surface?",
     overview:"The product guides an analyst from workbook ingestion through field mapping, validation, pricing, supplier incentives, deterministic calculation, and a filterable profitability dashboard.",
@@ -80,7 +80,7 @@ export const projects = {
     finding:"A data product becomes useful when its conclusions can be traced back through the workflow that produced them."
   },
   "second-world": {
-    title:"Second World", year:"2026", tags:"Data Visualization / Computation / Behavioral Research", image:"/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png", secondImage:"/portfolio/second-world/p5_animation/previews/second-world-animation-38s.png",
+    title:"Second World", year:"2026", color:"#6c86c9", tags:"Data Visualization / Computation / Behavioral Research", image:"/portfolio/second-world/p5_animation/previews/second-world-animation-60s.png", secondImage:"/portfolio/second-world/p5_animation/previews/second-world-animation-38s.png",
     lead:"A synchronized behavioral portrait comparing what I intended to do, what my digital avatar actually did, and how my body unconsciously responded during one recorded gaming session.",
     question:"How can one experience be read through intention, digital behavior, and bodily response at the same time?",
     overview:"Two independently logged workbooks are transformed into six synchronized temporal channels and compressed from a 2,996-second recording into a deterministic 60-second animation.",

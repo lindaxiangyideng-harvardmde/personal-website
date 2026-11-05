@@ -27,7 +27,7 @@ started by hand from the repository's Actions tab ("Run workflow").
 
 - Repository secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 - Worker name: `linda-deng-portfolio`, set in `vite.config.ts`.
-- Live URL: https://linda-deng-portfolio.linda-deng.workers.dev
+- Live URL: https://lindaxiangyideng.com (also www., and https://linda-deng-portfolio.linda-deng.workers.dev)
 - Node version: pinned by `.node-version`. Use npm only; there is no pnpm lockfile.
 
 The build writes `dist/server/wrangler.json` and `.wrangler/deploy/config.json`,

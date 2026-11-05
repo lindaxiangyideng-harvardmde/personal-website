@@ -14,6 +14,13 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const localBindingConfig = {
   // The Cloudflare Worker this site deploys to (see README "Deployment").
   name: "linda-deng-portfolio",
+  // Public domains. Cloudflare creates the DNS records and certificates on deploy;
+  // the linda-deng.workers.dev address keeps working alongside them.
+  routes: [
+    { pattern: "lindaxiangyideng.com", custom_domain: true },
+    { pattern: "www.lindaxiangyideng.com", custom_domain: true },
+  ],
+  workers_dev: true,
   main: "./worker/index.ts",
   compatibility_flags: ["nodejs_compat"],
   d1_databases: d1
